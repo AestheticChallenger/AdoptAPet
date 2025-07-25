@@ -1,0 +1,30 @@
+{
+  "name": "adoptapet",
+  "version": "1.0.0",
+  "description": "adopting pets?",
+  "keywords": [
+    "pets"
+  ],
+  "homepage": "https://github.com/AestheticChallenger/AdoptAPet#readme",
+  "bugs": {
+    "url": "https://github.com/AestheticChallenger/AdoptAPet/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AestheticChallenger/AdoptAPet.git"
+  },
+  "license": "ISC",
+  "author": "Team_8",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongodb": "^6.18.0",
+    "nodemon": "^3.1.10"
+  }
+}

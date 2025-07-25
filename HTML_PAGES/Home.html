@@ -1,0 +1,141 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HomePage</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-size: cover;
+            background-position: center;
+            background-color: #8e8e8e;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            /* separates left and right content */
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            /* optional */
+        }
+
+        .pageinfo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            justify-content: flex-end;
+            /* align all links and button to the right */
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-right: auto;
+            /* pushes everything else to the right */
+        }
+
+        .pageinfo a,
+        .pageinfo button {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .pageinfo a:hover,
+        .pageinfo button:hover {
+            color: #ff0000;
+            /* Red color on hover */
+        }
+
+        .intro {
+            background-color: #1c5373;
+            /* Light grey background for intro section */
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .intro h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .intro img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            /* Rounded corners */
+        }
+
+        .full-width-image {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .full-width-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            /* Rounded corners */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <img src="../IMAGES/logo.png" class="logo">
+
+        <div class="pageinfo">
+            <a href="/">Home</a>
+            <a href="/pet-product">Pet Products</a>
+            <a href="/adopt">Adopt a Pet</a>
+            <a href="HTML_PAGES/HappilyAdoptedPets.html">Happily Adopted Pets</a>
+            <a href="/about-us">Contact Us</a>
+            <button>Emergencies: (+971)-504259539</button>
+        </div>
+    </div>
+
+    <div class="intro">
+        <div>
+            <h1>OUR STORY</h1>
+            <p>Our mission is to find loving homes for pets in need.</p>
+        </div>
+        <div>
+            <img src="../IMAGES/introimage.jpeg" alt="Image">
+        </div>
+    </div>
+
+    <div class="full-width-image">
+        <div class="intro">
+            <div>
+                <h1>Why adopt not shop?</h1>
+                <p>Our mission is to find loving homes for pets in need.</p>
+            </div>
+
+            <div>
+                <img src="../IMAGES/introimage2.jpeg" alt="Large Image">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

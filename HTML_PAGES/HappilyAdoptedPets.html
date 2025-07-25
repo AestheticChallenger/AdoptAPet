@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Happily Adopted Pets</title>
+    <style>
+      body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-color: #8e8e8e;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+}
+
+.container {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+.pageinfo {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px 400px;
+    background-color: #ffffff;
+}
+
+.pageinfo a, .pageinfo button {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.pageinfo a:hover, .pageinfo button:hover {
+    color: #ff0000; 
+}
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .pet {
+            flex: 1 1 calc(33.333% - 20px);
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pet img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .pet p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="pageinfo">
+            <img src="../IMAGES/logo.png" class="logo">
+            <a href="/">Home</a>
+            <a href="/pet-product">Pet Products</a>
+            <a href="/adopt">Adopt a Pet</a>
+            <a href="HTML_PAGES/HappilyAdoptedPets.html">Happily Adopted Pets</a>
+            <a href="/about-us">Contact Us</a>
+            <button>Emergencies: (+971)-504259539</button>
+
+        </div>
+        </div>
+    <div class="container">
+        <h1>Happily Adopted Pets</h1>
+        <div class="pets">
+            <div class="pet">
+                <img src="../IMAGES/adoptedcat1.jpeg" alt="Happy Pet 1">
+                <p>Moon - Living his best life with his new family(dareens family)</p>
+            </div>
+            <div class="pet">
+                <img src="../IMAGES/adoptedcat2.jpeg" alt="Happy Pet 2">
+                <p>Molly - Enjoying her new home and loving it!</p>
+            </div>
+            <div class="pet">
+                <img src="../IMAGES/adoptedcat3.jpeg" alt="Happy Pet 3">
+                <p>Bella - Thriving in her forever home!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
