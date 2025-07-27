@@ -1,162 +1,167 @@
+<!-- Have to modify this -->
+
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <style>
+<head>
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-size: cover;
-    background-position: center;
-    background-color: #8e8e8e;
-    margin: 0;
-    padding: 0;
-    color: #000000;
-}
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-size: cover;
+            background-position: center;
+            background-color: #8e8e8e;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+        }
 
-.container {
-    padding: 20px 0;
-    text-align: center;
-}
+        .container {
+            padding: 20px 0;
+            text-align: center;
+        }
 
-.logo {
-    width: 150px;
-    height: auto;
-}
+        .logo {
+            width: 150px;
+            height: auto;
+        }
 
-.pageinfo {
-    display: flex;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    padding: 10px 400px;
-    background-color: #ffffff;
-}
+        .pageinfo {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 10px 400px;
+            background-color: #ffffff;
+        }
 
-.pageinfo a, .pageinfo button {
-    text-decoration: none;
-    color: #000000;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
+        .pageinfo a,
+        .pageinfo button {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
 
-.pageinfo a:hover, .pageinfo button:hover {
-    color: #ff0000; 
-}
+        .pageinfo a:hover,
+        .pageinfo button:hover {
+            color: #ff0000;
+        }
 
-            h1{
-                text-align: center;
-                color: #0a0909;
-                
-            }
+        h1 {
+            text-align: center;
+            color: #0a0909;
 
-            .checkout-form{
-                width: 100%;
-                padding: 20px;
-                background-color: #fff;
-                border-radius: 10px;
+        }
 
-            }
+        .checkout-form {
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
 
-            .checkout-formlabel{
-                margin-bottom: 5px;
-                font-weight: bold;
-                color: #333;
-            }
+        }
 
-            .checkout-form input, select{
-                width: 50%;
-                padding: 10px;
-                font-size: 16px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                margin-bottom: 15px;
-            }
+        .checkout-formlabel {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
 
-            .checkout-form button{
-                width: 50%;
-                background-color: green;
-                color: white;
-                padding: 15px;
-                font-size: 18px;
-                border: none;
-                border-radius: 10px;
-                margin-top: 15px;
-            }
+        .checkout-form input,
+        select {
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
 
-            .checkout-form button:hover{
-                background-color: rgb(169, 169, 41);
-                color: #35452a;
-            }
-            /*cart*/
-        </style>
+        .checkout-form button {
+            width: 50%;
+            background-color: green;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
 
-    </head>
+        .checkout-form button:hover {
+            background-color: rgb(169, 169, 41);
+            color: #35452a;
+        }
 
-    <body>
- 
-            <div class="container">
-                <div class="pageinfo">
-                    <img src="logo.png" class="logo">
-                    <a href="/">Home</a>
-                    <a href="/pet-product">Pet Products</a>
-                    <a href="/adopt">Adopt a Pet</a>
-                    <a href="HTML_PAGES/HappilyAdoptedPets.html">Happily Adopted Pets</a>
-                    <a href="/about-us">Contact Us</a>
-                    <button>Emergencies: (+971)-504259539</button>
-                </div>
-            </div>
-            
-            <h1>Checkout</h1>
+        /*cart*/
+    </style>
 
-            <form class="checkout-form" action="#" method="post">
-                <label for = "name">Name</label><br>
-                <input type="text" id="name" placeholder="Enter your name" required>
+</head>
 
-                <br>
+<body>
 
-                <label for = "email">Email</label><br>
-                <input type="email" id="email" placeholder="Enter your email" required>
+    <header class="navbar">
+        <img src="/IMAGES/logo.png" alt="Logo" class="logo">
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pet-products">Pet Products</a>
+            <a href="/adopt">Adopt a Pet</a>
+            <a href="/about-developers">Contact Us</a>
+        </nav>
+    </header>
 
-                <br>
+    <h1>Checkout</h1>
 
-                <label for = "address">Address</label><br>
-                <input type="text" id="address" placeholder="Enter your Shipping Address" required>
+    <form class="checkout-form" action="#" method="post">
+        <label for="name">Name</label><br>
+        <input type="text" id="name" placeholder="Enter your name" required>
 
-                <br>
+        <br>
 
-                <label for = "country">Country</label><br>
-                <select type="text" id="contry">
-                    <option value="UAE" >UAE</option>
-                </select>
+        <label for="email">Email</label><br>
+        <input type="email" id="email" placeholder="Enter your email" required>
 
-                <br>
+        <br>
 
-                <label for = "city">City</label><br>
-                <select type="text" id="city" required>
-                    <option value="Adu Dhabi">Adu Dhabi</option>
-                    <option value="Dubai">Dubai</option>
-                    <option value="Sharjah">Sharjah</option>
-                    <option value="Al Ain">Al Ain</option>
-                    <option value="Ras Al-Khaimah">Ras Al-Khaimah</option>
-                    <option value="Fujairah">Fujairah</option>
-                    <option value="Ajamn">Ajman</option>
-                </select>
-                <br>
+        <label for="address">Address</label><br>
+        <input type="text" id="address" placeholder="Enter your Shipping Address" required>
 
-                <label for="payment-method">Payment Method</label><br>
-                <select type="payment" id="method" required>
-                    <option value="pay by cart" selected>Credit Card</option>
-                    <option value="cash on delivery">Cash On Delivery</option>
-                </select>
+        <br>
 
-                    <button type="button" id="submit">Proceed To Payment</button>
-                
-                    
+        <label for="country">Country</label><br>
+        <select type="text" id="contry">
+            <option value="UAE">UAE</option>
+        </select>
 
-            </form>
+        <br>
 
-        </div>
-    </body>
+        <label for="city">City</label><br>
+        <select type="text" id="city" required>
+            <option value="Adu Dhabi">Adu Dhabi</option>
+            <option value="Dubai">Dubai</option>
+            <option value="Sharjah">Sharjah</option>
+            <option value="Al Ain">Al Ain</option>
+            <option value="Ras Al-Khaimah">Ras Al-Khaimah</option>
+            <option value="Fujairah">Fujairah</option>
+            <option value="Ajamn">Ajman</option>
+        </select>
+        <br>
+
+        <label for="payment-method">Payment Method</label><br>
+        <select type="payment" id="method" required>
+            <option value="pay by cart" selected>Credit Card</option>
+            <option value="cash on delivery">Cash On Delivery</option>
+        </select>
+
+        <button type="button" id="submit">Proceed To Payment</button>
+
+
+
+    </form>
+
+    </div>
+</body>
+
 </html>

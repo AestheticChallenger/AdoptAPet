@@ -1,0 +1,119 @@
+h1 {
+    text-align: center;
+    color: #1c5373;
+}
+
+main {
+    padding: 1em;
+}
+
+.pet-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    gap: 20px;
+    transition: transform 4s ease, box-shadow 4s ease, border 4s ease;
+}
+
+.pet-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(28, 83, 115, 0.3);
+    border: 2px solid #1c5373;
+    border-radius: 15px;
+
+
+}
+
+.pet-image {
+    flex: 1;
+    text-align: center;
+}
+
+.pet-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pet-image h2 {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #1c5373;
+}
+
+/* divides the card to 3 parts and assigns 2parts for this and 1 part for the image + name */
+.pet-details {
+    flex: 2;
+}
+
+.pet-card p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.requirement li {
+    list-style: none;
+    font-weight: 500;
+    color: #555;
+    background-color: #f0f8ff;
+    padding: 10px;
+    border-left: 4px solid #1c5373;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.button {
+    background-color: #ffffff;
+    color: #1c5373;
+    padding: 10px 16px;
+    border: 2px solid #1c5373;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #14425a;
+    color: #ffffff;
+}
+
+/* For the slideshow */
+.slideshow-container {
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+}
+
+.slideshow-container .pet-card {
+    height: 400px;
+}
+
+.slide {
+    position: absolute;
+    /* stack slides */
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    /* active slide is on top */
+}

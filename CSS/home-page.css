@@ -1,11 +1,11 @@
-
+/* 
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-image: url(kawaii.jpg);
     background-repeat:no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-position: center;/*kawaii*/
+    background-position: center;
     margin: 0pt;
     padding: 0pt;
 }
@@ -93,4 +93,4 @@ p{
     line-height: 30px;
     padding-top: 30px;
     color: #fff;
-}
+} */

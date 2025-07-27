@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
 
 <head>
     <meta charset="utf-8">
@@ -22,6 +22,7 @@
             align-items: center;
             padding: 10px 20px;
             background-color: #f0f0f0;
+            
             /* optional */
         }
 
@@ -32,6 +33,7 @@
             width: 100%;
             justify-content: flex-end;
             /* align all links and button to the right */
+            font-size: medium;
         }
 
         .logo {
@@ -48,11 +50,13 @@
             font-weight: bold;
             padding: 10px 20px;
             border-radius: 5px;
+            font-size: large;
+            padding: 15px 30px;
         }
 
         .pageinfo a:hover,
         .pageinfo button:hover {
-            color: #ff0000;
+            color: #1c5373;
             /* Red color on hover */
         }
 
@@ -64,6 +68,7 @@
             margin: auto;
             display: flex;
             align-items: center;
+            border-radius: 10px;
         }
 
         .intro h1 {
@@ -85,7 +90,7 @@
         }
 
         .full-width-image {
-            padding: 20px;
+           margin-top: 10px;;
             text-align: center;
         }
 
@@ -101,15 +106,14 @@
 <body>
 
     <div class="container">
-        <img src="../IMAGES/logo.png" class="logo">
+        <img src="IMAGES/logo.png" class="logo">
 
         <div class="pageinfo">
             <a href="/">Home</a>
-            <a href="/pet-product">Pet Products</a>
+            <a href="/pet-products">Pet Products</a>
             <a href="/adopt">Adopt a Pet</a>
-            <a href="HTML_PAGES/HappilyAdoptedPets.html">Happily Adopted Pets</a>
-            <a href="/about-us">Contact Us</a>
-            <button>Emergencies: (+971)-504259539</button>
+            <!-- <a href="HTML_PAGES/HappilyAdoptedPets.html">Happily Adopted Pets</a> 
+            <a href="/about-developers">Contact Us</a>
         </div>
     </div>
 
@@ -119,7 +123,7 @@
             <p>Our mission is to find loving homes for pets in need.</p>
         </div>
         <div>
-            <img src="../IMAGES/introimage.jpeg" alt="Image">
+            <img src="IMAGES/introimage.jpeg" alt="Image">
         </div>
     </div>
 
@@ -131,10 +135,98 @@
             </div>
 
             <div>
-                <img src="../IMAGES/introimage2.jpeg" alt="Large Image">
+                <img src="IMAGES/introimage2.jpeg" alt="Large Image">
             </div>
         </div>
     </div>
+
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="/CSS/navigation.css">
+    <link rel="stylesheet" href="/CSS/home-page.css">
+    <style>
+                .section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .section h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #1c5373;
+        }
+
+        .section p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .section img {
+            max-width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .section-text {
+            flex: 1 1 300px;
+        }
+
+        .section-image {
+            flex: 1 1 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <img src="IMAGES/logo.png" alt="Logo" class="logo">
+        <nav class="nav-links">
+            
+            <a href="/pet-products">Pet Products</a>
+            <a href="/adopt">Adopt a Pet</a>
+            <a href="/about-developers">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="section">
+        <div class="section-text">
+            <h1>Our Story</h1>
+            <p>Our mission is to find loving homes for pets in need. Every adoption helps give an animal a second
+                chance at life, filled with warmth, care, and happiness.</p>
+        </div>
+        <div class="section-image">
+            <img src="IMAGES/introimage.jpeg" alt="Happy pet and owner">
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-text">
+            <h1>Why Adopt, Not Shop?</h1>
+            <p>By adopting, you're not only giving a pet a loving home but also taking a stand against animal cruelty
+                and ovNerbreedMMMMMing. Make a difference — choose adoption.</p>
+        </div>
+        <div class="section-image">
+            <img src="IMAGES/introimage2.jpeg" alt="Pet adoption scene">
+        </div>
+    </section>
 
 </body>
 
