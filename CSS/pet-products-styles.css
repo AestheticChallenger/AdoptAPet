@@ -136,3 +136,65 @@ button:hover {
     background-color: rgb(218, 22, 22);
     color: #a10202;
 }
+
+/* Wrap products and cart together */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 30px;
+}
+
+/* Sidebar Cart Styling */
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 70px;
+    width: 300px;
+    background-color: #f9f9f9;
+    border: 2px solid #1c5373;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    z-index: 999;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hidden by default */
+.sidebar.hidden {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Cart item list styling */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+/* Scrollbar for cart */
+.sidebar ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar ul::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+/* Cart list items */
+.sidebar ul li {
+    padding: 6px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Cart total text */
+.sidebar .foot h2 {
+    font-size: 24px;
+}

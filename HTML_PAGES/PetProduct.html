@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/CSS/pet-products-styles.css">
 
     <style>
-        
+
     </style>
 </head>
 
@@ -24,146 +24,230 @@
         </nav>
     </header>
 
-    <div class="products">
-        <div class="product-item">
-            <div class="product-label">Offer</div>
-            <img src="../IMAGES/cat Food-1.jpg" alt="Whiskas Adult Cat Dry Food">
+    <!-- Cart Toggle Button -->
+    <button id="toggle-cart"
+        style="width: 75px; height: 75px; position: fixed; top: 100px; right: 20px; z-index: 1000; border-radius: 50%;">
+        🛒 Cart
+    </button>
 
 
-            <h4>Whiskas Adult Cat Dry Food</h4>
-            <p>AED44.00<span class="old-price"> Was:AED76.13</span></p>
-            <button type="button" class="add-to-cart" onclick="addToCart('Whiskas Adult Cat Dry Food', 44.00)">Add
-                To Cart</button>
+    <div class="main-content">
+        <div class="products">
+            <div class="product-item">
+                <div class="product-label">Offer</div>
+                <img src="../IMAGES/cat Food-1.jpg" alt="Whiskas Adult Cat Dry Food">
+
+
+                <h4>Whiskas Adult Cat Dry Food</h4>
+                <p>AED44.00<span class="old-price"> Was:AED76.13</span></p>
+                <button type="button" class="add-to-cart" onclick="addToCart('Whiskas Adult Cat Dry Food', 44.00)">Add
+                    To Cart</button>
 
 
 
+            </div>
+
+            <div class="product-item">
+                <img src="/IMAGES/cat toy-1.jpg" alt="Cat Beds for Indoor Cats Comfortable with Play Ball"
+                    style="width: 300px; height: 250px;">
+                <h4>Cat Beds for Indoor Cats Comfortable with Play Ball</h4>
+                <p>AED74.90</p>
+                <button type="button" class="add-to-cart"
+                    onclick="addToCart('Cat Beds for Indoor Cats Comfortable with Play Ball', 74.90)">Add To
+                    Cart</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-label hot-sale">Hot Sale</div>
+                <img src="/IMAGES/cat toy-2.jpg" alt="Homarket Cat Tree for Indoor Cats"
+                    style="width: 200px; height: 200px;">
+                <h4>Homarket Cat Tree for Indoor Cats</h4>
+                <p>AED149.90<span class="old-price"> Was:AED210.35</span></p>
+                <button type="button" class="add-to-cart"
+                    onclick="addToCart('Homarket Cat Tree for Indoor Cats', 149.90)">Add To Cart</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-label offer">Offer</div>
+                <img src="/IMAGES/dog food-1.png" alt="Kangaroo and Turkey Dog Food">
+                <h4>Kangaroo and Turkey Dog Food</h4>
+                <p>AED84.24</p>
+                <button type="button" class="add-to-cart" onclick="addToCart('Kangaroo and Turkey Dog Food', 84.24)">Add
+                    To
+                    Cart</button>
+            </div>
+
+            <div class="product-item">
+                <img src="/IMAGES/dog bed.jpg" alt="Luxury Nest Dog Bed Stylish Herringbone Fabric Balmoral"
+                    style="width: 350px; height: 350px;">
+                <h4>Luxury Nest Dog Bed Stylish Herringbone Fabric Balmoral</h4>
+                <p>AED79.00</p>
+                <button type="button" class="add-to-cart"
+                    onclick="addToCart('Luxury Nest Dog Bed Stylish Herringbone Fabric Balmoral', 79.00)">Add To
+                    Cart</button>
+            </div>
+
+            <div class="product-item">
+                <img src="/IMAGES/dog food-3.jpg" alt="Burns Mixed Variety Box Wet Dog Food"
+                    style="width: 250px; height: 200px;">
+                <h4>Burns Mixed Variety Box Wet Dog Food</h4>
+                <p>AED89.25</p>
+                <button type="button" class="add-to-cart"
+                    onclick="addToCart('Burns Mixed Variety Box Wet Dog Food', 89.25)">Add To Cart</button>
+            </div>
+
+            <div class="product-item">
+                <img src="/IMAGES/Hamstar-1.jpg" alt="SunSeed Vita Prima" style="width: 200px; height: 200px;">
+                <h4>SunSeed Vita Prima</h4>
+                <p>AED23.05</p>
+                <button type="button" class="add-to-cart" onclick="addToCart('SunSeed Vita Prima', 23.05)">Add To
+                    Cart</button>
+            </div>
+
+            <div class="product-item">
+                <img src="/IMAGES/Hamstar-2.jpg" alt="Little One For Dwarf Hamsters"
+                    style="width: 200px; height: 200px;">
+                <h4>Little One For Dwarf Hamsters 400g</h4>
+                <p>AED12.07<span class="old-price">Was:AED29.00</span></p>
+                <button type="button" class="add-to-cart"
+                    onclick="addToCart('Little One For Dwarf Hamsters', 12.07)">Add To
+                    Cart</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-label hot-sale">Hot Sale</div>
+                <img src="/IMAGES/Hamster-4.jpg" alt="Woonden Hamster Cage with 2-Tiers with Shelf and Ladder"
+                    style="width: 320px; height: 300px;">
+                <h4>Woonden Hamster Cage with 2-Tiers with Shelf and Ladder</h4>
+                <p>AED544.00<span class="old-price">Was:AED610.75</span></p>
+                <button type="button" class="add-to-cart"
+                    onclick="addToCart('Woonden Hamster Cage with 2-Tiers with Shelf and Ladder', 544.00)">Add To
+                    Cart</button>
+            </div>
         </div>
 
-        <div class="product-item">
-            <img src="/IMAGES/cat toy-1.jpg" alt="Cat Beds for Indoor Cats Comfortable with Play Ball"
-                style="width: 300px; height: 250px;">
-            <h4>Cat Beds for Indoor Cats Comfortable with Play Ball</h4>
-            <p>AED74.90</p>
-            <button type="button" class="add-to-cart"
-                onclick="addToCart('Cat Beds for Indoor Cats Comfortable with Play Ball', 74.90)">Add To Cart</button>
-        </div>
-
-        <div class="product-item">
-            <div class="product-label hot-sale">Hot Sale</div>
-            <img src="/IMAGES/cat toy-2.jpg" alt="Homarket Cat Tree for Indoor Cats"
-                style="width: 200px; height: 200px;">
-            <h4>Homarket Cat Tree for Indoor Cats</h4>
-            <p>AED149.90<span class="old-price"> Was:AED210.35</span></p>
-            <button type="button" class="add-to-cart"
-                onclick="addToCart('Homarket Cat Tree for Indoor Cats', 149.90)">Add To Cart</button>
-        </div>
-
-        <div class="product-item">
-            <div class="product-label offer">Offer</div>
-            <img src="/IMAGES/dog food-1.png" alt="Kangaroo and Turkey Dog Food">
-            <h4>Kangaroo and Turkey Dog Food</h4>
-            <p>AED84.24</p>
-            <button type="button" class="add-to-cart" onclick="addToCart('Kangaroo and Turkey Dog Food', 84.24)">Add To
-                Cart</button>
-        </div>
-
-        <div class="product-item">
-            <img src="/IMAGES/dog bed.jpg" alt="Luxury Nest Dog Bed Stylish Herringbone Fabric Balmoral"
-                style="width: 350px; height: 350px;">
-            <h4>Luxury Nest Dog Bed Stylish Herringbone Fabric Balmoral</h4>
-            <p>AED79.00</p>
-            <button type="button" class="add-to-cart"
-                onclick="addToCart('Luxury Nest Dog Bed Stylish Herringbone Fabric Balmoral', 79.00)">Add To
-                Cart</button>
-        </div>
-
-        <div class="product-item">
-            <img src="/IMAGES/dog food-3.jpg" alt="Burns Mixed Variety Box Wet Dog Food"
-                style="width: 250px; height: 200px;">
-            <h4>Burns Mixed Variety Box Wet Dog Food</h4>
-            <p>AED89.25</p>
-            <button type="button" class="add-to-cart"
-                onclick="addToCart('Burns Mixed Variety Box Wet Dog Food', 89.25)">Add To Cart</button>
-        </div>
-
-        <div class="product-item">
-            <img src="/IMAGES/Hamstar-1.jpg" alt="SunSeed Vita Prima" style="width: 200px; height: 200px;">
-            <h4>SunSeed Vita Prima</h4>
-            <p>AED23.05</p>
-            <button type="button" class="add-to-cart" onclick="addToCart('SunSeed Vita Prima', 23.05)">Add To
-                Cart</button>
-        </div>
-
-        <div class="product-item">
-            <img src="/IMAGES/Hamstar-2.jpg" alt="Little One For Dwarf Hamsters" style="width: 200px; height: 200px;">
-            <h4>Little One For Dwarf Hamsters 400g</h4>
-            <p>AED12.07<span class="old-price">Was:AED29.00</span></p>
-            <button type="button" class="add-to-cart" onclick="addToCart('Little One For Dwarf Hamsters', 12.07)">Add To
-                Cart</button>
-        </div>
-
-        <div class="product-item">
-            <div class="product-label hot-sale">Hot Sale</div>
-            <img src="/IMAGES/Hamster-4.jpg" alt="Woonden Hamster Cage with 2-Tiers with Shelf and Ladder"
-                style="width: 320px; height: 300px;">
-            <h4>Woonden Hamster Cage with 2-Tiers with Shelf and Ladder</h4>
-            <p>AED544.00<span class="old-price">Was:AED610.75</span></p>
-            <button type="button" class="add-to-cart"
-                onclick="addToCart('Woonden Hamster Cage with 2-Tiers with Shelf and Ladder', 544.00)">Add To
-                Cart</button>
+        <div class="sidebar hidden" id="cart-sidebar">
+            <div class="head">
+                <p>My Cart</p>
+            </div>
+            <ul id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <div class="foot">
+                <h3>Total</h3>
+                <h2 id="total-price" style="color: #5a5959;">AED 0.00</h2>
+                <br>
+                <button type="button" class="blue" id="checkout">
+                    Checkout
+                </button>
+            </div>
         </div>
     </div>
-
-    <div class="sidebar">
-        <div class="head">
-            <p>My Cart</p>
-        </div>
-        <ul id="cart-items">
-            <!-- Cart items will be dynamically added here -->
-        </ul>
-        <div class="foot">
-            <h3>Total</h3>
-            <h2 id="total-price" style="color: #5a5959;">AED 0.00</h2>
-            <br>
-            <button type="button" class="blue" id="checkout">
-                Checkout
-            </button>
-        </div>
-    </div>
-
     <script>
-        var count = 0;
+        // var count = 0;
+
+        // document.getElementById("checkout").addEventListener("click", function () {
+        //     window.open("/cart");
+        // });
+
+
+        // function addToCart(productName, productPrice) {
+        //     //add product to the cart list
+        //     var cartItems = document.getElementById("cart-items");
+        //     var price = Math.round(productPrice * 100) / 100;
+
+        //     //create a new list item
+        //     var newList = '<li>' + productName + ' - AED ' + price + '</li>';
+
+        //     cartItems.innerHTML += newList;
+
+        //     //Update the price
+        //     count += productPrice;
+        //     displayPrice();
+        // }
+
+        // function displayPrice() {
+        //     var totalCount = Math.round(count * 100) / 100;
+        //     document.getElementById("total-price").innerHTML = "Total Price: AED " + totalCount;
+        // }
+
+        // function checkout() {
+        //     //Empty the cart and reset the price
+        //     count = 0;
+        //     var cartItems = document.getElementById("cart-items");
+        //     cartItems.innerHTML = "";
+        //     document.getElementById("total-price").innerHTML = "AED 0.00";
+        // }
+
+        let count = 0;
+        const cart = {};
+
+        const toggleCartBtn = document.getElementById("toggle-cart");
+        const cartSidebar = document.getElementById("cart-sidebar");
+
+        toggleCartBtn.addEventListener("click", function () {
+            cartSidebar.classList.toggle("hidden");
+        });
+
+        // Optional: close cart when clicking outside
+        document.addEventListener("click", function (e) {
+            if (!cartSidebar.contains(e.target) && e.target !== toggleCartBtn) {
+                cartSidebar.classList.add("hidden");
+            }
+        });
 
         document.getElementById("checkout").addEventListener("click", function () {
             window.open("/cart");
         });
 
-
         function addToCart(productName, productPrice) {
-            //add product to the cart list
-            var cartItems = document.getElementById("cart-items");
-            var price = Math.round(productPrice * 100) / 100;
+            // If product already in cart, increase quantity
+            if (cart[productName]) {
+                cart[productName].quantity += 1;
+                cart[productName].total = Math.round((cart[productName].quantity * productPrice) * 100) / 100;
+            } else {
+                // Add new product to cart
+                cart[productName] = {
+                    price: productPrice,
+                    quantity: 1,
+                    total: Math.round(productPrice * 100) / 100
+                };
+            }
 
-            //create a new list item
-            var newList = '<li>' + productName + ' - AED ' + price + '</li>';
-
-            cartItems.innerHTML += newList;
-
-            //Update the price
+            // Update total cart price
             count += productPrice;
+
+            // Refresh cart display
+            renderCart();
             displayPrice();
         }
 
+        function renderCart() {
+            const cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = ""; // Clear existing items
+
+            for (let product in cart) {
+                const item = cart[product];
+                const li = document.createElement("li");
+                li.innerHTML = `${product} × ${item.quantity} — AED ${item.total.toFixed(2)}`;
+                cartItems.appendChild(li);
+            }
+        }
+
         function displayPrice() {
-            var totalCount = Math.round(count * 100) / 100;
+            const totalCount = Math.round(count * 100) / 100;
             document.getElementById("total-price").innerHTML = "Total Price: AED " + totalCount;
         }
 
         function checkout() {
-            //Empty the cart and reset the price
+            // Empty the cart and reset the price
             count = 0;
-            var cartItems = document.getElementById("cart-items");
-            cartItems.innerHTML = "";
+            if (cart.length == 0) {
+                return;
+            }
+            for (let product in cart)
+                delete cart[product];
+            document.getElementById("cart-items").innerHTML = "";
             document.getElementById("total-price").innerHTML = "AED 0.00";
         }
     </script>

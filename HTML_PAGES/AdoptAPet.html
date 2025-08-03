@@ -135,7 +135,29 @@
     </main>
 
     <script>
+        const url = new URL(window.location.href);
+        const pathParts = url.pathname.split('/');
 
+        var name = "Guest"; // Default Name
+        if (pathParts.length == 3) // if the user logged in
+            name = pathParts[2];
+
+        // for adoption
+        function enterAdoptionFormFor(requestedPet) {
+            const width = 600;
+            const height = 700;
+            const left = (screen.width / 2) - (width / 2);
+            const top = (screen.height / 2) - (height / 2);
+
+            window.open(
+                `/adoption-form/${name}/${requestedPet}`,
+                'AdoptionFormPopup',
+                `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
+            );
+        }
+
+
+        // for slideshow
         let slideIndex = 0;
         const slides = document.querySelectorAll(".slide");
 

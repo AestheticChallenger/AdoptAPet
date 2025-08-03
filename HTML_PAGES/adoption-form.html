@@ -1,0 +1,343 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoption-Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background: white;
+            padding: 30px;
+            margin: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 4px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .inline-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body style="text-align: center;">
+    <!-- <h1 id="hello">Adoption Form</h1>
+
+    <form action="/submit-adoption" method="get">
+        <label for="first_name">First name: <input type="text" id="first_name" required></label><br>
+        <label for="last_name">Last name: <input type="text" id="last_name" required></label><br>
+        <label for="middle_name">Middle name: <input type="text" id="middle_name"></label><br>
+        <label>Email: <input type="email" required></label><br>
+        <label>Address: <input type="text"></label><br>
+        <label>Contact Number: <input type="tel"></label><br>
+        <label>Occupation: <input type="text"></label><br>
+
+        <!-- checkbox --
+        <label for="owned-pet">Have you owned a pet before? </label>
+        <select id="owned-pet" name="owned-pet">
+            <option>yes</option>
+            <option>no</option>
+        </select>
+        <br>
+
+        <label>Hours you are away from home daily: <input type="number"> hours</label><br>
+        <label>Family member currently living with you: <input type="number"></label><br>
+        <label>Number of roommates living with you: <input type="number"></label><br>
+        <label>Number of roommates living with you: <input type="number"></label><br>
+        <label>Number of children: <input type="number"></label><br>
+
+        <!-- checkbox --
+        <label for="agree-pet">Has everyone agreed to adopting a pet? </label>
+        <select id="agree-pet" name="agree-pet">
+            <option>yes</option>
+            <option>no</option>
+        </select> <br>
+
+    </form> --
+
+    <div class="form-container">
+        <h2>Pet Adoption Form</h2>
+        <form action="/submit-adoption" method="get">
+            <label for="first_name">First Name:
+                <input type="text" id="first_name" name="first_name" required>
+            </label>
+
+            <label for="last_name">Last Name:
+                <input type="text" id="last_name" name="last_name" required>
+            </label>
+
+            <label for="middle_name">Middle Name:
+                <input type="text" id="middle_name" name="middle_name">
+            </label>
+
+            <label for="email">Email:
+                <input type="email" id="email" name="email" required>
+            </label>
+
+            <label for="address">Address:
+                <input type="text" id="address" name="address">
+            </label>
+
+            <label for="contact">Contact Number:
+                <input type="tel" id="contact" name="contact">
+            </label>
+
+            <label for="occupation">Occupation:
+                <input type="text" id="occupation" name="occupation">
+            </label>
+
+            <label for="owned-pet">Have you owned a pet before?</label>
+            <select id="owned-pet" name="owned_pet">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="away_hours">Hours you are away from home daily:
+                <input type="number" id="away_hours" name="away_hours" min="0">
+            </label>
+
+            <label for="family_members">Family members living with you:
+                <input type="number" id="family_members" name="family_members" min="0">
+            </label>
+
+            <label for="residents">Number of residents (excluding you):
+                <input type="number" id="residents" name="residents" min="0">
+            </label>
+
+            <label for="children">Number of children:
+                <input type="number" id="children" name="children" min="0">
+            </label>
+
+            <label for="agree-pet">Has everyone agreed to adopt a pet?</label>
+            <select id="agree-pet" name="agree_pet">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const url = new URL(window.location.href); // `/adoption-form/Guest/ginger`
+        const pathParts = url.pathname.split('/'); // split the url into  4 parts
+
+        var name = pathParts[2]; // Guest
+        var petName = pathParts[3]; // ginger
+
+
+
+    </script>
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Adoption Form</title>
+  <style>
+    /* body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    } */
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      height: 100%;
+      align-content: center;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      /* margin-left: 20%; */
+      width: 220px;
+      font-weight: bold;
+      flex: 1;
+    }
+
+    .form-group input,
+    .form-group select {
+      /* width: 50%; */
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 20%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h2>Pet Adoption Form</h2>
+    <form action="/submit-adoption" method="get" style="margin: 5%;">
+
+      <div class="form-group">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="middle_name">Middle Name:</label>
+        <input type="text" id="middle_name" name="middle_name">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address">
+      </div>
+
+      <div class="form-group">
+        <label for="contact">Contact Number:</label>
+        <input type="tel" id="contact" name="contact">
+      </div>
+
+      <div class="form-group">
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation">
+      </div>
+
+      <div class="form-group">
+        <label for="owned-pet">Have you owned a pet before?</label>
+        <select id="owned-pet" name="owned_pet">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="away_hours">Hours away from home daily:</label>
+        <input type="number" id="away_hours" name="away_hours" min="0">
+      </div>
+
+      <div class="form-group">
+        <label for="family_members">Family members with you:</label>
+        <input type="number" id="family_members" name="family_members" min="0">
+      </div>
+
+      <div class="form-group">
+        <label for="residents">Number of residents:</label>
+        <input type="number" id="residents" name="residents" min="0">
+      </div>
+
+      <div class="form-group">
+        <label for="children">Number of children:</label>
+        <input type="number" id="children" name="children" min="0">
+      </div>
+
+      <div class="form-group">
+        <label for="agree-pet">Has everyone agreed?</label>
+        <select id="agree-pet" name="agree_pet">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="/adoption-form.js">
+
+  </script>
+</body>
+
+</html>

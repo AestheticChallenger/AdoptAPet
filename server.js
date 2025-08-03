@@ -15,8 +15,13 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'Home.html'));
 });
 
+// if user didn't log in
 app.get('/adopt', (req, res) => {
-    var name = req.query.name || 'Guest';
+    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'AdoptAPet.html'));
+});
+
+// if user log in
+app.get('/adopt/:name', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'AdoptAPet.html'));
 });
 
@@ -33,7 +38,19 @@ app.get('/cart', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'Payment.html'));
 });
 
+app.get('/adoption-form/:user/:name', (req, res) => {
+    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'adoption-form.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'login.html'));
+});
+
+
+
 
 app.listen(7942, () => {
     console.log('🚀 Server is running at http://localhost:7942');
 });
+
+

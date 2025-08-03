@@ -43,6 +43,14 @@ main {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+.slideshow-container .pet-image img {
+    width: 350px;
+    height: 350PX;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 .pet-image h2 {
     margin-top: 10px;
     font-size: 24px;

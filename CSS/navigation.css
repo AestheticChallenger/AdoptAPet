@@ -6,13 +6,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-size: cover;
     background-position: center;
-    background-color:
-    /* #d7e0e6 */
-    #e8eef1
-    /* #d2dde3 */
-    /* #bbcbd5 */
-    /* #f0f8ff */
-    ;
+    background-color: #e8eef1;
     margin: 0;
     color: #000000;
 }
