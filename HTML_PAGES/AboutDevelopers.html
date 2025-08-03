@@ -20,11 +20,8 @@
         </nav>
     </header>
 
-    
-
+    <!-- Developers Info -->
     <main>
-        <!-- Developers Info -->
-
         <!-- We can use the adopt the pet's card instead here
          we will have to write more info as well -->
         <section class="about-developers">
@@ -35,7 +32,7 @@
                     <ul>
                         <li>Frontend</li>
                         <li>Web Design</li>
-                        
+
                     </ul>
                 </div>
                 <div class="dev-card">
@@ -56,44 +53,50 @@
                 we’re here to help! Reach out — we love hearing from fellow pet lovers.
             </p>
 
+            <!-- Contact Form -->
             <div class="contact-section">
-                <!-- Contact Form -->
-                <form class="contact-form" id="form">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" placeholder="Enter your name" required />
+                <form class="contact-form" id="form" action="/submit-contact-us-form" method="post">
+                    <label for="name">Name <input type="text" id="name" placeholder="Enter your name" name="name"
+                            required /></label>
 
                     <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required />
+                    <input type="email" id="email" placeholder="Enter your email" name="email" required />
 
                     <label for="message">Message</label>
-                    <textarea id="message" rows="4" placeholder="Write your message here" required></textarea>
+                    <textarea id="message" rows="4" placeholder="Write your message here" name="message"
+                        required></textarea>
 
-                    <button type="submit">Send Now</button>
+                    <button type="button" onclick="submit()">Send Now</button>
                 </form>
-
-                <!-- Contact Info Row (moved below form) -->
-                <div class="contact-info-row">
-                    <div class="info-box">
-                        <h3>Phone</h3>
-                        <p>(+971)-504259539</p>
-                    </div>
-                    <div class="info-box">
-                        <h3>WhatsApp</h3>
-                        <p>(+971)-564127840</p>
-                    </div>
-                    <div class="info-box">
-                        <h3>Email</h3>
-                        <p>thebarkinglot221@gmail.com</p>
-                    </div>
-                    <div class="info-box">
-                        <h3>Our Shop</h3>
-                        <p>Al Wasl Road, Al Thanya St,<br />Umm Suqeim, Dubai, UAE</p>
-                    </div>
-                </div>
             </div>
 
+            <div class="contact-info-row">
+                <div class="info-box">
+                    <h3>Phone</h3>
+                    <p>(+971)-504259539</p>
+                </div>
+                <div class="info-box">
+                    <h3>WhatsApp</h3>
+                    <p>(+971)-564127840</p>
+                </div>
+                <div class="info-box">
+                    <h3>Email</h3>
+                    <p>thebarkinglot221@gmail.com</p>
+                </div>
+                <div class="info-box">
+                    <h3>Our Shop</h3>
+                    <p>Al Wasl Road, Al Thanya St,<br />Umm Suqeim, Dubai, UAE</p>
+                </div>
+            </div>
         </section>
+
+        <div id="popup" style="display: none; position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px 25px; border-radius: 8px; z-index: 1000;">
+            ✅ Message sent successfully!
+        </div>
+
     </main>
+
+    <script src="/JAVASCRIPT/notification.js"></script>
 </body>
 
 </html>
