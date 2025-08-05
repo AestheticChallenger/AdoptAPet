@@ -81,7 +81,6 @@ button:hover {
 }
 
 .product-item img:hover {
-    transform: scale(1.05);
     transform: scale(1.03);
     /* zoom in slightly */
     border-radius: 10px 10px 0 0;

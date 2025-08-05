@@ -18,12 +18,10 @@ main {
     margin: 20px auto;
     max-width: 800px;
     gap: 20px;
-    transition: transform 4s ease, box-shadow 4s ease, border 4s ease;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
 
 .pet-card:hover {
-    transform: scale(1.03);
     transform: scale(1.01);
     box-shadow: 0 12px 30px rgba(28, 83, 115, 0.3);
     border: 2px solid #1c5373;
