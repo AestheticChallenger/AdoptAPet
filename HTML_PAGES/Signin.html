@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to bottom, #b146ef, #3b82f6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+
+        }
+
+        .signup-box{
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+       .signup-box:hover{
+            background-color: #e9b1f545;
+        }
+        
+
+        .signup-box h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .signup-box input{
+            width: 90%;
+            padding: 12px 14px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+
+        }
+
+        .error{
+            color: red;
+            font-size: 14px;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+
+
+
+        .signup-box button{
+            width: 100%;
+            padding: 12px;
+            background-color: #ef46ab;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        button:hover{
+            background-color: #d32f84;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="signup-box">
+    <h2>Create Account</h2>
+    <form id="signupForm" action="signup.php" method="POST">
+        <input type="text" name="username" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+        <div class="error" id="error"></div>
+
+        <br>
+
+        <button type="submit" onclick="signUp()">Sign Up</button>
+
+    </form>
+</div>
+    
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e)){
+            e.preventDefault();
+        
+
+            const fullName = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirm = document.getElementById('confirmPassword').value.trim();   
+            const error = document.getElementById('error');
+
+            if(!email || !password || !confirm || !fullName){
+                error.textContent = "Please fill all fields."
+                return;
+            }
+
+            if(password !== confirm){
+                error.textContent = "Passwords do not match.";
+                return;
+            }
+
+            if(password.length < 6){
+                erreo.textContent = "Password must be at least 6 characters.";
+                return;
+            }
+
+            //setting empty array
+            let users = JSON.parse()
+
+            //checks if the user already exists
+            const existUser = users.find(user => user.email === email);
+
+            if (exitsUser){
+                message.textContent = 'Email already registered.'
+                return;
+            }
+
+            //add new user
+            users.push({ email, password });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      message.textContent = "Account created successfully!";
+      message.classList.add("success");
+
+      // Redirect after 1.5 sec
+      setTimeout(() => {
+        window.location.href = "index.html"; // Your login page
+      }, 1500);
+
+          if (pass !== confirm) {
+        e.preventDefault();
+        errorDiv.textContent = "Passwords do not match.";
+    } else if (pass.length < 6) {
+        e.preventDefault();
+        errorDiv.textContent = "Password must be at least 6 characters.";
+    } else {
+        errorDiv.textContent = "";
+    }
+
+        }
+        
+    </script>
+    
+</body>
+</html>
+
+// <script>
+//     document.getElementById('signupForm').addEventListener('submit', function(e) {
+//         e.preventDefault();
+
+//         const fullName = document.getElementById('username').value.trim();
+//         const email = document.getElementById('email').value.trim();
+//         const password = document.getElementById('password').value.trim();
+//         const confirm = document.getElementById('confirm_password').value.trim();
+//         const errorDiv = document.getElementById('error');
+
+//         if (!email || !password || !confirm || !fullName) {
+//             errorDiv.textContent = "Please fill all fields.";
+//             return;
+//         }
+
+//         if (password !== confirm) {
+//             errorDiv.textContent = "Passwords do not match.";
+//             return;
+//         }
+
+//         if (password.length < 6) {
+//             errorDiv.textContent = "Password must be at least 6 characters.";
+//             return;
+//         }
+
+//         fetch("http://localhost:5000/signup", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify({
+//                 fullName,
+//                 email,
+//                 password,
+//                 confirm_password: confirm
+//             })
+//         })
+//         .then(res => res.json())
+//         .then(data => {
+//             if (data.message === "Account created successfully!") {
+//                 errorDiv.className = "success";
+//                 errorDiv.textContent = data.message;
+//                 setTimeout(() => window.location.href = "index.html", 1500);
+//             } else {
+//                 errorDiv.className = "error";
+//                 errorDiv.textContent = data.message;
+//             }
+//         })
+//         .catch(err => {
+//             errorDiv.textContent = "Something went wrong.";
+//         });
+//     });
+// </script>

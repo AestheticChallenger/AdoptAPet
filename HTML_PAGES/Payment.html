@@ -5,28 +5,61 @@
 
 <head>
 
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-size: cover;
-            background-position: center;
-            background-color: #8e8e8e;
+        *{
             margin: 0;
             padding: 0;
-            color: #000000;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to bottom, #b146ef, #3b82f6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        div{
+
+            background-color: rgb(247, 246, 246);
+
+
         }
 
         .container {
-            padding: 20px 0;
+            width: 70%;
+            /* max-width: 600px; */
+            padding: 30px;
             text-align: center;
+            border-radius: 12px;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .logo {
+        /* .logo{
             width: 150px;
             height: auto;
         }
 
-        .pageinfo {
+        .nav-links a{
+            text-decoration: none;
+            color: #333;
+            font-weight: 20px;
+            margin-left: 20px;
+
+        }
+
+        .nav-links a:hover{
+            color: #ff0000;
+        } */
+
+
+        /* .pageinfo {
             display: flex;
             align-items: center;
             max-width: 1200px;
@@ -47,52 +80,63 @@
         .pageinfo a:hover,
         .pageinfo button:hover {
             color: #ff0000;
-        }
+        } */
 
+        
         h1 {
             text-align: center;
-            color: #0a0909;
+            color: white;
+            margin-bottom: 25px;
 
         }
 
-        .checkout-form {
-            width: 100%;
-            padding: 20px;
+        /* .checkout-form {
             background-color: #fff;
-            border-radius: 10px;
+            width: 90%;
+            padding: 30px;
+            margin: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2)
 
-        }
+        } */
 
-        .checkout-formlabel {
-            margin-bottom: 5px;
+        .checkout-form label {
+            display: block;
+            margin-bottom: 6px;
             font-weight: bold;
             color: #333;
         }
 
         .checkout-form input,
-        select {
-            width: 50%;
-            padding: 10px;
-            font-size: 16px;
+        .checkout-form select {
+            width: 80%;
+            padding: 12px;
+            font-size: 15px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 15px;
+            border-radius: 8px;
+            margin: 20px 0 10px;
+
         }
 
         .checkout-form button {
-            width: 50%;
-            background-color: green;
+            width: 70%;
+            padding: 15px;
+            background-color: rgb(10, 102, 82);
             color: white;
             padding: 15px;
-            font-size: 18px;
+            font-size: 16px;
             border: none;
             border-radius: 10px;
             margin-top: 15px;
+            cursor: pointer;
         }
 
         .checkout-form button:hover {
-            background-color: rgb(169, 169, 41);
-            color: #35452a;
+            background-color: rgb(41, 141, 169);
+        }
+
+        .checkout-form{
+            padding: 20px;
         }
 
         /*cart*/
@@ -102,7 +146,7 @@
 
 <body>
 
-    <header class="navbar">
+    <!-- <header class="navbar">
         <img src="/IMAGES/logo.png" alt="Logo" class="logo">
         <nav class="nav-links">
             <a href="/">Home</a>
@@ -110,7 +154,8 @@
             <a href="/adopt">Adopt a Pet</a>
             <a href="/about-developers">Contact Us</a>
         </nav>
-    </header>
+    </header> -->
+    <div class="container">
 
     <h1>Checkout</h1>
 
@@ -131,7 +176,7 @@
         <br>
 
         <label for="country">Country</label><br>
-        <select type="text" id="contry">
+        <select type="text" id="country">
             <option value="UAE">UAE</option>
         </select>
 
@@ -139,13 +184,13 @@
 
         <label for="city">City</label><br>
         <select type="text" id="city" required>
-            <option value="Adu Dhabi">Adu Dhabi</option>
+            <option value="Adu Dhabi">Adu Dhabhi</option>
             <option value="Dubai">Dubai</option>
             <option value="Sharjah">Sharjah</option>
             <option value="Al Ain">Al Ain</option>
             <option value="Ras Al-Khaimah">Ras Al-Khaimah</option>
             <option value="Fujairah">Fujairah</option>
-            <option value="Ajamn">Ajman</option>
+            <option value="Ajman">Ajman</option>
         </select>
         <br>
 
@@ -160,8 +205,8 @@
 
 
     </form>
-
     </div>
+
 </body>
 
 </html>

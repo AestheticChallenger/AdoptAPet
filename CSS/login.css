@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+}
+.container{
+    height:100px;
+    background: linear-gradient(to bottom, #d946ef, #3b82f6);
+
+}
+.login-box{
+
+}
+.remember{
+
+}
