@@ -82,6 +82,7 @@ button:hover {
 
 .product-item img:hover {
     transform: scale(1.05);
+    transform: scale(1.03);
     /* zoom in slightly */
     border-radius: 10px 10px 0 0;
     /* top rounded corners */
@@ -94,9 +95,6 @@ button:hover {
     color: #fff;
     font-size: 12px;
 }
-
-
-
 
 .product-label .hot-sale {
     background-color: #4caf50;

@@ -55,7 +55,8 @@
 
             <!-- Contact Form -->
             <div class="contact-section">
-                <form class="contact-form" id="form" action="/submit-contact-us-form" method="post">
+                <!-- method="post" action="/submit-contact-us-form" -->
+                <form class="contact-form" id="form">
                     <label for="name">Name <input type="text" id="name" placeholder="Enter your name" name="name"
                             required /></label>
 
@@ -66,7 +67,7 @@
                     <textarea id="message" rows="4" placeholder="Write your message here" name="message"
                         required></textarea>
 
-                    <button type="button" onclick="submit()">Send Now</button>
+                    <button type="submit" onclick="send()">Send Now</button>
                 </form>
             </div>
 
@@ -90,13 +91,53 @@
             </div>
         </section>
 
-        <div id="popup" style="display: none; position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px 25px; border-radius: 8px; z-index: 1000;">
+        <div id="popup"
+            style="display: none; position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px 25px; border-radius: 8px; z-index: 1000;">
             ✅ Message sent successfully!
         </div>
 
     </main>
 
-    <script src="/JAVASCRIPT/notification.js"></script>
+    <!-- <script>
+        const popup = document.getElementById('popup');
+
+        function send() {
+popup.style.display = "block";
+        }
+    </script> -->
+
+    <script>
+        document.getElementById("form")
+            .addEventListener("submit", async function (e) {
+                e.preventDefault(); // Prevent page reload
+
+                const formData = new FormData(this);
+                const body = Object.fromEntries(formData.entries());
+
+                const res = await fetch("/submit-contact-us-form", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                document.getElementById("popup").style.display = "block";
+                document.getElementById('form').reset();
+
+                if (res.ok)
+                    setTimeout(() => {
+                        document.getElementById("popup").style.display = "none";
+                    }, 3000);
+
+                else
+                    setTimeout(() => {
+                        document.getElementById("popup").style.display = "none";
+                        document.getElementById("popup").style.color = "red";
+                    }, 3000);
+            });
+    </script>
+
 </body>
 
 </html>
