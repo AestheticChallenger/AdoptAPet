@@ -68,10 +68,6 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'login.html'));
 });
 
-app.listen(7942, () => {
-    console.log('🚀 Server is running at http://localhost:7942');
-});
-
 // ===================================================================
 
 // MongoDB - Database
