@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+const cors = require('cors');
+app.use(cors()); // Add this near the top of your file
+
 // Serve static folders with proper capitalization
 app.use('/IMAGES', express.static(path.join(__dirname, 'IMAGES')));
 app.use('/CSS', express.static(path.join(__dirname, 'CSS')));
@@ -303,7 +306,7 @@ app.post("/signup", async (req, res) => {
 })
 
 //server listen
-const PORT = 10000
+const PORT = 10000 || 7942;
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`)
 })
