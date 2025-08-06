@@ -200,3 +200,63 @@ app.post("/submit-contact-us-form", async (req, res) => {
  // cart
 
 // User Form -> login / sign in
+
+const userSchema = new mongoose.Schema({
+
+    full_name: {
+        type: String,
+        require: true,
+    },
+
+    email: {
+     type: String,
+     require: true,   
+    },
+
+    password: {
+    type: String,
+    require: true,
+    }
+},{timestamps: true})
+
+const userModel = mongoose.model("users", userSchema)
+
+app.post("/signup", async (req, res) => {
+
+    const {full_name, email, password, confirm_password} = req.body
+
+    if(!full_name || !email || !password || !confirm_password){
+        return res.status(400).json({message: "All fields are required."})
+
+    }
+
+    if(password !== confirm_password){
+        return res.status(400).json({message: "Passwords do not match."});
+            }
+
+    if(password.length < 6){
+        return res.status(400).json({message: "Password must be 6 characters."});;
+    }
+
+    try{
+        const existingUser = await userModel.findOne({email})
+
+        if(existingUser){
+            return res.status(400).json({message: "Email already registered."});
+        }
+
+        const newUser = new unserModel({
+            full_name,
+            email,
+            password
+        })
+
+        await newUser.save();
+
+        res.status(201).json({message: "Account created successfully!"});
+
+    }catch (error){
+        console.error("SignUp error: ", error)
+        res.status(500).json({message: "Internal server error."});
+    }
+})
