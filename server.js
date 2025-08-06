@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'HTML_PAGES')));
 
 // middleware
 app.use(express.urlencoded({ extended: true })); // for making sure the the values are in json format
-app.use(express.json()); 
+app.use(express.json());
 
 // Routes for HTML pages
 app.get('/', (req, res) => {
@@ -60,12 +60,8 @@ app.get('/cart', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'Payment.html'));
 });
 
-app.get('/adoption-form/:user/:name', (req, res) => {
-    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'adoption-form.html'));
-});
-
 app.get('/profile', (req, res) => {
-     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'profile.html'));
+    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'profile.html'));
 })
 
 app.get('/login', (req, res) => {
@@ -220,36 +216,39 @@ app.post("/submit-contact-us-form", async (req, res) => {
     });
 
     console.log("form: " + contactUsModelDetails);
-    return res.status(201).json({msg: "success"});
-    
+    return res.status(201).json({ msg: "success" });
+
 });
 
 // ===================================================================
 
 // Order Page here => Mehejat
- // cart
+// cart
 
 // User Form -> login / sign in
 
 const userSchema = new mongoose.Schema({
-
     full_name: {
         type: String,
         require: true,
     },
 
     email: {
-     type: String,
-     require: true,
-     //for no duplicate emeil
-     unique: true   
+        type: String,
+        require: true,
+        //for no duplicate emeil
+        unique: true
     },
 
     password: {
-    type: String,
-    require: true,
+        type: String,
+        require: true,
+    },
+
+    address: {
+        type: String
     }
-}, {timestamps: true})
+}, { timestamps: true })
 
 const userModel = mongoose.model("users", userSchema)
 
@@ -258,26 +257,26 @@ const userModel = mongoose.model("users", userSchema)
 
 app.post("/signup", async (req, res) => {
 
-    const {full_name, email, password, confirm_password} = req.body
+    const { full_name, email, password, confirm_password } = req.body
 
-    if(!full_name || !email || !password || !confirm_password){
-        return res.status(400).json({message: `All fields are required. ${full_name}, ${email}, ${password}, ${confirm_password}`});
+    if (!full_name || !email || !password || !confirm_password) {
+        return res.status(400).json({ message: `All fields are required. ${full_name}, ${email}, ${password}, ${confirm_password}` });
 
     }
 
-    if(password !== confirm_password){
-        return res.status(400).json({message: "Passwords do not match."});
-            }
-
-    if(password.length < 6){
-        return res.status(400).json({message: "Password must be 6 characters."});;
+    if (password !== confirm_password) {
+        return res.status(400).json({ message: "Passwords do not match." });
     }
 
-    try{
-        const existingUser = await userModel.findOne({email})
+    if (password.length < 6) {
+        return res.status(400).json({ message: "Password must be 6 characters." });;
+    }
 
-        if(existingUser){
-            return res.status(400).json({message: "Email already registered."});
+    try {
+        const existingUser = await userModel.findOne({ email })
+
+        if (existingUser) {
+            return res.status(400).json({ message: "Email already registered." });
         }
 
         const newUser = new userModel({
@@ -289,11 +288,11 @@ app.post("/signup", async (req, res) => {
         await newUser.save();
         console.log("New user created: ", newUser)
 
-        res.status(201).json({message: "Account created successfully!"});
+        res.status(201).json({ message: "Account created successfully!" });
 
-    }catch (err){
+    } catch (err) {
         console.error("SignUp error: ", err)
-        res.status(500).json({message: "Internal server error."});
+        res.status(500).json({ message: "Internal server error." });
     }
 })
 
@@ -326,9 +325,27 @@ app.post("/login", async (req, res) => {
 
         // Login successful
         return res.status(200).json({ message: "Login successful!", user });
-       ;
+        ;
     } catch (err) {
         console.error("Login error:", err);
         return res.status(500).json({ message: "Internal server error." });
+    }
+});
+
+
+// For getting info from the mongodb
+app.get('/userInfo/:name', async (req, res) => {
+    const userName = req.params.name;
+
+    try {
+        const user = await userModel.find({ full_name: userName });
+
+        if (!user || user.length === 0)
+            return res.status(404).json({ msg: "User not Found!" });
+
+        return res.json({ user });
+    } catch (error) {
+        console.log("Error fetching user:", error);
+        res.status(500).json({ message: "Server error" });
     }
 });
