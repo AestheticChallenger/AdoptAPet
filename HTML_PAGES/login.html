@@ -1,131 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    
+    <link rel="stylesheet" href="/CSS/navigation.css">
+
     <style>
-* {
+        .container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            /* background-color: rgba(255, 255, 255, 0.493); */
+            padding: 40px;
+            border-radius: 10px;
+            width: 320px;
+            height: fit-content;
+            /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); */
+            text-align: center;
+        }
 
-    box-sizing: border-box;
-
-}
-body, html {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-
-}
-/* input{
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0 5px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-} */
-input [type = "email"],
-input [type = "password"]{
-    width: 90%;
-    padding: 12px;
-    margin: 10px 0 5px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-}
+        input [type="email"],
+        input [type="password"] {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0 5px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+        }
 
 
 
-.login-box{
+        .login-box {
 
-    background-color: rgba(255, 255, 255, 0.493);
-    padding: 40px 30px;
-    border-radius: 10px;
-    width: 320px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    text-align: center;
-}
+            background-color: rgba(255, 255, 255, 0.493);
+            padding: 40px 30px;
+            border-radius: 10px;
+            width: 320px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
 
 
-.remember{
+        .remember {
+            margin-left: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 15px;
+            font-size: 14px;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 15px;
-    font-size: 14px;
+        }
 
-}
+        .remember input {
+            margin-right: 8px;
+        }
 
-.remember input{
-    margin-right: 8px;
-}
+        .log-btn {
+            background-color: #4684ef;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
 
-.log-btn{
-    background-color: #4684ef;
-    color: white;
-    padding: 12px;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    margin-top: 10px;
-    cursor: pointer;
-}
-.log-btn:hover{
-    background-color: #336fd4;
-}
+        .log-btn:hover {
+            background-color: #336fd4;
+        }
 
-.signup{
-    margin-top: 20px;
-    font-size: 14px;
-}
+        .signup {
+            margin-top: 20px;
+            font-size: 14px;
+        }
 
-.signup a{
-    color: #5a47e2;
-    text-decoration: none;
-}
-.signup:hover{
-    text-decoration: underline;
-}
+        .signup a {
+            color: #5a47e2;
+            text-decoration: none;
+        }
 
+        .signup:hover {
+            text-decoration: underline;
+        }
     </style>
-    
+
 </head>
+
 <body>
-
-
-
     <div class="container">
         <div class="login-box">
 
-    <h1>LOGIN</h1>
+            <h1>LOGIN</h1>
 
-    <form action="customer signin">
+            <form action="customer signin">
 
-        <input type="email" id="email" placeholder="Email" required>
-        <br><br>
-        <input type="password" id="password" placeholder="password" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <br><br>
+                <input type="password" id="password" placeholder="password" required>
 
-        <br><br>
-        <label class="remember">
-            <input type="checkbox"> Remember me
-        </label>
+                <br><br>
+                <label class="remember">
+                    <input type="checkbox"> Remember me
+                </label>
 
-        <br><br>
+                <br><br>
 
-        <button type="submit" class="log-btn" id="submit">LOGIN</button>
+                <button type="submit" class="log-btn" id="submit">LOGIN</button>
 
 
-        <p class="signup">Not a member? <a href="#">Sign up now</a></p>
+                <p class="signup">Not a member? <a href="#">Sign up now</a></p>
 
-    </form>
+            </form>
+        </div>
     </div>
-    </div>
-    
+
 
 </body>
+
 </html>
