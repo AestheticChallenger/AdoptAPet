@@ -362,6 +362,7 @@
             document.getElementById('adopt').href += `/${userName}`;
             document.getElementById('about-developers').href += `/${userName}`;
             document.getElementById('login').removeAttribute('href'); // removes the link after signing in
+            document.getElementById('login').innerHTML = 'Profile';
 
             fetch(`/profile/${userName}`)
                 .then(res => res.json())

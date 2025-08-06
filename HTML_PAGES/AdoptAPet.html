@@ -307,6 +307,133 @@
             petName.value = requestedPet;
             petName.disabled = true;
 
+            if (pathParts.length > 2) {
+                userName = pathParts[pathParts.length - 1];
+                document.getElementById('pet-products').href += `/${userName}`;
+                document.getElementById('adopt').href += `/${userName}`;
+                document.getElementById('about-developers').href += `/${userName}`;
+                document.getElementById('login').removeAttribute('href'); // removes the link after signing in
+                document.getElementById('login').innerHTML = 'Profile';
+
+                fetch(`/profile/${userName}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        const user = data.user[0];
+                        console.log(user);
+                        document.getElementById('full_name').value = user.full_name
+                        document.getElementById('email').value = user.email;
+                        if (user.address)
+                            document.getElementById('address').value = user.address;
+
+                        if (user.contact_number)
+                            document.getElementById('contact_number').value = user.contact_number;
+
+                        if (user.occupation)
+                            document.getElementById('occupation').value = user.occupation;
+
+                    }).catch(error => console.log(error));
+
+                // to view the profile
+                document.getElementById('login').addEventListener('click', () => {
+                    count++;
+                    const profile = document.getElementById('profile');
+                    profile.style.display = "flex";
+
+                    // for closing the profile by clicking on the profile
+                    if (count > 1) {
+                        count = 0;
+                        profile.style.display = "none";
+
+                    }
+                });
+
+                // shows the adoption forms
+                const submittedForms = document.getElementById('forms-submitted');
+
+                fetch(`/get-forms/${userName}`)
+                    .then(res => {
+                        if (!res.ok) throw new Error("Failed to fetch forms");
+                        return res.json();
+                    })
+                    .then(data => {
+                        if (!Array.isArray(data) || data.length === 0) {
+                            submittedForms.innerHTML += `<p>No adoption forms submitted.</p>`;
+                            return;
+                        }
+
+                        const ul = document.createElement('ul');
+                        data.forEach(form => {
+                            const li = document.createElement('li');
+                            li.textContent = `${form.pet_name} submitted`;
+                            ul.appendChild(li);
+                        });
+
+                        submittedForms.appendChild(ul);
+                    })
+                    .catch(error => {
+                        console.error("Error fetching forms:", error);
+                        submittedForms.innerHTML += `<p style="color: red;">Unable to load forms.</p>`;
+                    });
+
+
+                var address = document.getElementById('address');
+                var contact_number = document.getElementById('contact_number');
+                var occupation = document.getElementById('occupation');
+
+                const editBtn = document.getElementById('edit');
+                var editCount = 0;
+
+                editBtn.addEventListener("click", async () => {
+                    editCount++;
+                    editBtn.textContent = "save"
+
+                    address.disabled = false;
+                    contact_number.disabled = false;
+                    occupation.disabled = false;
+
+                    if (editCount > 1) {
+                        editBtn.textContent = "Edit"
+                        editCount = 0;
+
+                        address.disabled = true;
+                        contact_number.disabled = true;
+                        occupation.disabled = true;
+
+                        const updateData = {
+                            full_name: userName,
+                            address: address.value,
+                            contact_number: contact_number.value,
+                            occupation: occupation.value
+                        };
+
+
+                        try {
+                            const res = await fetch("/update-profile", {
+                                method: "PUT",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(updateData)
+                            });
+
+                            const result = await res.json();
+
+                            if (res.ok) {
+                                alert("Profile updated successfully!");
+                            } else {
+                                alert("Update failed: " + result.message);
+                            }
+                        } catch (err) {
+                            console.error("Update error:", err);
+                            alert("Something went wrong.");
+                        }
+
+                    }
+
+                });
+
+            }
+
             if (pathParts.length > 2) { // user logged in.. then autofill the info
                 fetch(`/userInfo/${userName}`)
                     .then(res => res.json())
