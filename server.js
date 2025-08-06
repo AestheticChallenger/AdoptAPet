@@ -17,6 +17,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'Home.html'));
 });
 
+app.get('/home', (req, res) => {
+    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'Home.html'));
+});
+
+app.get('/home/:name', (req, res) => {
+    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'Home.html'));
+});
+
 // if user didn't log in
 app.get('/adopt', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'AdoptAPet.html'));
@@ -35,7 +43,15 @@ app.get('/about-developers', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'AboutDevelopers.html'));
 });
 
+app.get('/about-developers/:name', (req, res) => {
+    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'AboutDevelopers.html'));
+});
+
 app.get('/pet-products', (req, res) => {
+    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'PetProduct.html'));
+});
+
+app.get('/pet-products/:name', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'PetProduct.html'));
 });
 
@@ -245,7 +261,7 @@ app.post("/signup", async (req, res) => {
     const {full_name, email, password, confirm_password} = req.body
 
     if(!full_name || !email || !password || !confirm_password){
-        return res.status(400).json({message: "All fields are required."})
+        return res.status(400).json({message: `All fields are required. ${full_name}, ${email}, ${password}, ${confirm_password}`});
 
     }
 
@@ -310,6 +326,7 @@ app.post("/login", async (req, res) => {
 
         // Login successful
         return res.status(200).json({ message: "Login successful!", user });
+       ;
     } catch (err) {
         console.error("Login error:", err);
         return res.status(500).json({ message: "Internal server error." });

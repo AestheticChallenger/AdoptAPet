@@ -17,10 +17,10 @@
     <header class="navbar">
         <img src="/IMAGES/logo.png" alt="Logo" class="logo">
         <nav class="nav-links">
-            <a href="/">Home</a>
-            <a href="/pet-products">Pet Products</a>
-            <a href="/adopt">Adopt a Pet</a>
-            <a href="/about-developers">Contact Us</a>
+            <a href="/pet-products" id="pet-products">Pet Products</a>
+            <a href="/adopt" id="adopt">Adopt a Pet</a>
+            <a href="/about-developers" id="about-developers">Contact Us</a>
+            <a href="/login" id="login">Login</a>
         </nav>
     </header>
 
@@ -157,6 +157,17 @@
 
         const cartBtn = document.getElementById("toggle-cart");
         const cartSidebar = document.getElementById("cart-sidebar");
+
+        const url = window.location.pathname;
+        const pathParts = url.split('/');
+
+        if (pathParts.length > 2) {
+            var userName = pathParts[pathParts.length - 1];
+            document.getElementById('pet-products').href += `/${userName}`;
+            document.getElementById('adopt').href += `/${userName}`;
+            document.getElementById('about-developers').href += `/${userName}`;
+            document.getElementById('login').href += `/${userName}`; // chnage this
+        }
 
 
         cartBtn.addEventListener("click", function () {

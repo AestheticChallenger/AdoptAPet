@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    
+
     <style>
-* {
+        * {
 
-    box-sizing: border-box;
+            box-sizing: border-box;
 
-}
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+        }
 
-}
-.container{
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0,0.2);
-}
-h2{
-    text-align: center;
-    margin-bottom: 20px;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
 
-input{
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0 5px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-}
-/* input [type = "email"],
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0 5px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+        }
+
+        /* input [type = "email"],
 input [type = "password"]{
     width: 200%;
     padding: 12px;
@@ -49,61 +54,63 @@ input [type = "password"]{
 
 
 
-.login-box{
+        .login-box {
 
-    background-color: rgba(255, 255, 255, 0.493);
-    padding: 40px 30px;
-    border-radius: 10px;
-    width: 320px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    text-align: center;
-}
+            background-color: rgba(255, 255, 255, 0.493);
+            padding: 40px 30px;
+            border-radius: 10px;
+            width: 320px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
 
 
-.remember{
+        .remember {
 
-    padding: 10px;
-    display: flex;
-    margin-bottom: 15px;
-    font-size: 14px;
+            padding: 10px;
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 14px;
 
-}
+        }
 
-.remember input{
-    margin-right: 8px;
-}
+        .remember input {
+            margin-right: 8px;
+        }
 
-.log-btn{
-    background-color: #4684ef;
-    color: white;
-    padding: 12px;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    margin-top: 10px;
-    cursor: pointer;
-}
-.log-btn:hover{
-    background-color: #336fd4;
-}
+        .log-btn {
+            background-color: #4684ef;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
 
-.signup{
-    margin-top: 20px;
-    font-size: 14px;
-}
+        .log-btn:hover {
+            background-color: #336fd4;
+        }
 
-.signup a{
-    color: #5a47e2;
-    text-decoration: none;
-}
-.signup:hover{
-    text-decoration: underline;
-}
+        .signup {
+            margin-top: 20px;
+            font-size: 14px;
+        }
 
+        .signup a {
+            color: #5a47e2;
+            text-decoration: none;
+        }
+
+        .signup:hover {
+            text-decoration: underline;
+        }
     </style>
-    
+
 </head>
+
 <body>
 
 
@@ -111,30 +118,30 @@ input [type = "password"]{
     <div class="container">
         <div class="login-box">
 
-    <h2>LOGIN</h2>
+            <h2>LOGIN</h2>
 
-    <form action="customer signin">
+            <form id="loginForm">
 
-        <input type="email" id="email" placeholder="Email" required>
-        <br><br>
-        <input type="password" id="password" placeholder="password" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <br><br>
+                <input type="password" id="password" placeholder="password" required>
 
-        <br><br>
-        <label class="remember">
-            <input type="checkbox">Remember me
-        </label>
+                <br><br>
+                <label class="remember">
+                    <input type="checkbox">Remember me
+                </label>
 
-        <br><br>
+                <br><br>
 
-        <button type="submit" class="log-btn" id="submit">LOGIN</button>
+                <button type="submit" class="log-btn" id="submit">LOGIN</button>
 
 
-        <p class="signup">Not a member? <a href="Signin.html">Sign up now</a></p>
+                <p class="signup">Not a member? <a href="Signin.html">Sign up now</a></p>
 
-        <div class="message" id="loginMessage"></div>
+                <div class="message" id="message"></div>
 
-    </form>
-    </div>
+            </form>
+        </div>
     </div>
 
     <script>
@@ -142,34 +149,38 @@ input [type = "password"]{
         const loginForm = document.getElementById("loginForm")
         const messageDiv = document.getElementById("message")
 
-        form.addEventListener("submit", async (e) => {
+        loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            const res = await fetch ("http://localhost:7942/login", {
-                method: "PORT",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({email, password})
+            const res = await fetch("http://localhost:7942/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
             })
             const data = await res.json();
 
             if (res.ok) {
+                loginForm.reset();
                 messageDiv.style.color = "green";
                 messageDiv.textContent = data.message;
+                console.log("Logged in");
                 // Redirect after success:
                 setTimeout(() => {
-                    window.location.href = "/profile"; // Or any other page
+                    var userName = data.user.full_name;
+                     window.location.href = `/home/${encodeURIComponent(userName)}`;
                 }, 1000);
             } else {
                 messageDiv.style.color = "red";
                 messageDiv.textContent = data.message;
             }
         });
-        
+
     </script>
-    
+
 
 </body>
+
 </html>

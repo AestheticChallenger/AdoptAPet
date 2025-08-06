@@ -154,7 +154,7 @@
     <link rel="stylesheet" href="/CSS/navigation.css">
     <link rel="stylesheet" href="/CSS/home-page.css">
     <style>
-                .section {
+        .section {
             max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
@@ -197,13 +197,12 @@
 <body>
 
     <header class="navbar">
-        <img src="IMAGES/logo.png" alt="Logo" class="logo">
+        <img src="/IMAGES/logo.png" alt="Logo" class="logo">
         <nav class="nav-links">
-            
-            <a href="/pet-products">Pet Products</a>
-            <a href="/adopt">Adopt a Pet</a>
-            <a href="/about-developers">Contact Us</a>
-            <a href="/login">Login</a>
+            <a href="/pet-products" id="pet-products">Pet Products</a>
+            <a href="/adopt" id="adopt">Adopt a Pet</a>
+            <a href="/about-developers" id="about-developers">Contact Us</a>
+            <a href="/login" id="login">Login</a>
         </nav>
     </header>
 
@@ -214,7 +213,7 @@
                 chance at life, filled with warmth, care, and happiness.</p>
         </div>
         <div class="section-image">
-            <img src="IMAGES/introimage.jpeg" alt="Happy pet and owner">
+            <img src="/IMAGES/introimage.jpeg" alt="Happy pet and owner">
         </div>
     </section>
 
@@ -225,9 +224,22 @@
                 and ovNerbreedMMMMMing. Make a difference — choose adoption.</p>
         </div>
         <div class="section-image">
-            <img src="IMAGES/introimage2.jpeg" alt="Pet adoption scene">
+            <img src="/IMAGES/introimage2.jpeg" alt="Pet adoption scene">
         </div>
     </section>
+
+    <script>
+        const url = window.location.pathname;
+        const pathParts = url.split('/');
+
+        if (pathParts.length > 2) {
+            var userName = pathParts[pathParts.length - 1];
+            document.getElementById('pet-products').href += `/${userName}`;
+            document.getElementById('adopt').href += `/${userName}`;
+            document.getElementById('about-developers').href += `/${userName}`;
+            document.getElementById('login').href += `/${userName}`; // chnage this
+        }
+    </script>
 
 </body>
 
