@@ -189,13 +189,6 @@
             cartSidebar.classList.toggle("hidden");
         });
 
-        // Optional: close cart when clicking outside
-        document.addEventListener("click", function (e) {
-            if (!cartSidebar.contains(e.target) && e.target !== toggleCartBtn) {
-                cartSidebar.classList.add("hidden");
-            }
-        });
-
         document.getElementById("checkout").addEventListener("click", function () {
             window.open("/cart");
         });

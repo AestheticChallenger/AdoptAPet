@@ -7,6 +7,51 @@
     <title>Adopt a Pet</title>
     <link rel="stylesheet" href="/CSS/navigation.css">
     <link rel="stylesheet" href="/CSS/adopt-styles.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 700px;
+            height: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-content iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .close-btn {
+            font-size: 28px;
+            color: #aaa;
+            padding: 10px 20px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+    </style>
 
 </head>
 
@@ -89,7 +134,7 @@
                     <div class="requirement">
                         <li>Requirements: Must have a fenced yard for playtime.</li>
                     </div>
-                    <button class="button" onclick="enterAdoptionFormFor('rosey')"> Adopt </button>
+                    <button id="btn" class="button" onclick="enterAdoptionFormFor('rosey')"> Adopt </button>
 
                 </div>
             </div>
@@ -133,28 +178,61 @@
             </div>
         </section>
     </main>
+    <!-- Modal Popup -->
+    <div id="customModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <iframe id="modalIframe" src="" frameborder="0"></iframe>
+        </div>
+    </div>
 
     <script>
-        const url = new URL(window.location.href);
-        const pathParts = url.pathname.split('/');
+        // const url = new URL(window.location.href);
+        // const pathParts = url.pathname.split('/');
 
-        var name = "Guest"; // Default Name
-        if (pathParts.length == 3) // if the user logged in
-            name = pathParts[2];
+        // var name = "Guest"; // Default Name
+        // if (pathParts.length == 3) // if the user logged in
+        //     name = pathParts[2];
 
         // for adoption
-        function enterAdoptionFormFor(requestedPet) {
-            const width = 600;
-            const height = 700;
-            const left = (screen.width / 2) - (width / 2);
-            const top = (screen.height / 2) - (height / 2);
+        // function enterAdoptionFormFor(requestedPet) {
+        //     const width = 600;
+        //     const height = 700;
+        //     const left = (screen.width / 2) - (width / 2);
+        //     const top = (screen.height / 2) - (height / 2);
 
-            window.open(
-                `/adoption-form/${name}/${requestedPet}`,
-                'AdoptionFormPopup',
-                `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
-            );
+        //     window.open(
+        //         `/adoption-form/${name}/${requestedPet}`,
+        //         'AdoptionFormPopup',
+        //         `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
+        //     );
+        // }
+
+        function enterAdoptionFormFor(requestedPet) {
+            console.log("Form clicked")
+            const modal = document.getElementById("customModal");
+            const iframe = document.getElementById("modalIframe");
+
+            iframe.src = `/adoption-form/${name}/${requestedPet}`;
+            modal.style.display = "block";
         }
+
+        function closeModal() {
+            const modal = document.getElementById("customModal");
+            const iframe = document.getElementById("modalIframe");
+
+            iframe.src = ""; // optional: clear content when closing
+            modal.style.display = "none";
+        }
+
+        // Optional: close modal when clicking outside it
+        window.onclick = function (event) {
+            const modal = document.getElementById("customModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
 
 
         // for slideshow

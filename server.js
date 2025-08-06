@@ -10,6 +10,7 @@ app.use(express.static(path.join(__dirname, 'HTML_PAGES')));
 
 // middleware
 app.use(express.urlencoded({ extended: true })); // for making sure the the values are in json format
+app.use(express.json()); 
 
 // Routes for HTML pages
 app.get('/', (req, res) => {
@@ -43,6 +44,10 @@ app.get('/adoption-form/:user/:name', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'adoption-form.html'));
 });
 
+app.get('/profile', (req, res) => {
+     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'profile.html'));
+})
+
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'login.html'));
 });
@@ -50,6 +55,8 @@ app.get('/login', (req, res) => {
 app.listen(7942, () => {
     console.log('🚀 Server is running at http://localhost:7942');
 });
+
+// ===================================================================
 
 // MongoDB - Database
 const mongoose = require('mongoose');
@@ -156,6 +163,7 @@ app.post("/submit-adoption-form", async (req, res) => {
     return res.status(201).json({ msg: "success!" });
 });
 
+// ===================================================================
 
 // About Developers Page
 const contactUsSchema = new mongoose.Schema({
@@ -177,7 +185,7 @@ const contactUsSchema = new mongoose.Schema({
 
 const contactUsModel = mongoose.model("contact_us_form", contactUsSchema);
 
-// ===================================================================
+
 app.post("/submit-contact-us-form", async (req, res) => {
     const body = req.body;
     if (!body || !body.name || !body.email || !body.message)
@@ -192,9 +200,11 @@ app.post("/submit-contact-us-form", async (req, res) => {
     });
 
     console.log("form: " + contactUsModelDetails);
-    return res.status(201).json({ msg: "success!" });
-
+    return res.status(201).json({msg: "success"});
+    
 });
+
+// ===================================================================
 
 // Order Page here => Mehejat
  // cart
