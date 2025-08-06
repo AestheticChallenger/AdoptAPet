@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+require('dotenv').config();
+
 const cors = require('cors');
 app.use(cors()); // Add this near the top of your file
 
