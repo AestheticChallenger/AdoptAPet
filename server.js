@@ -77,7 +77,8 @@ app.listen(7942, () => {
 // MongoDB - Database
 const mongoose = require('mongoose');
 const { type } = require('os');
-mongoose.connect('mongodb+srv://ayshahira9:MyStrongPass123%21@cluster.lmnuodf.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster')
+const mongoUri = process.env.MONGODB_URI;
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch(() => console.log('error connecting'));
 
