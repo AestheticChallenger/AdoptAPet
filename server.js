@@ -77,7 +77,7 @@ app.listen(7942, () => {
 // MongoDB - Database
 const mongoose = require('mongoose');
 const { type } = require('os');
-mongoose.connect('mongodb://localhost:27017/adopt-a-pet')
+mongoose.connect('mongodb+srv://ayshahira9:MyStrongPass123%21@cluster.lmnuodf.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster')
     .then(() => console.log('MongoDB connected'))
     .catch(() => console.log('error connecting'));
 
@@ -306,7 +306,7 @@ app.post("/signup", async (req, res) => {
 })
 
 //server listen
-const PORT = 7942
+const PORT = 10000
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`)
 })
