@@ -79,7 +79,7 @@ app.get('/login', (req, res) => {
 const mongoose = require('mongoose');
 const { type } = require('os');
 const mongoUri = process.env.MONGODB_URI;
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoUri)
     .then(() => console.log('MongoDB connected'))
     .catch(() => console.log('error connecting'));
 
