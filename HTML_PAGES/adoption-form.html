@@ -69,83 +69,39 @@
 </head>
 
 <body>
-  <div class="form-container"> 
-    <h2>Pet Adoption Form</h2>
-    <form action="/submit-adoption-form" method="post" style="margin: 5%;">
-
-      <div class="form-group">
-        <label for="pet_name">Pet Name:</label>
-        <input type="text" id="pet_name" name="pet_name" required>
-      </div>
-
-      <div class="form-group">
-        <label for="full_name">Full Name:</label>
-        <input type="text" id="full_name" name="full_name" required>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-
-      <div class="form-group">
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address">
-      </div>
-
-      <div class="form-group">
-        <label for="contact_number">Contact Number:</label>
-        <input type="tel" id="contact_number" name="contact_number">
-      </div>
-
-      <div class="form-group">
-        <label for="occupation">Occupation:</label>
-        <input type="text" id="occupation" name="occupation">
-      </div>
-
-      <div class="form-group">
-        <label for="owned-pet">Have you owned a pet before?</label>
-        <select id="owned-pet" name="owned_pet">
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="hours_away">Hours away from home daily:</label>
-        <input type="number" id="hours_away" name="hours_away" min="0">
-      </div>
-
-      <div class="form-group">
-        <label for="family">Family members with you:</label>
-        <input type="number" id="family" name="family" min="0">
-      </div>
-
-      <div class="form-group">
-        <label for="roomates">Number of roomates with you (excluding family) :</label>
-        <input type="number" id="roomates" name="roomates" min="0">
-      </div>
-
-      <div class="form-group">
-        <label for="children">Number of children:</label>
-        <input type="number" id="children" name="children" min="0">
-      </div>
-
-      <div class="form-group">
-        <label for="agree_to_have_pet">Has everyone agreed?</label>
-        <select id="agree_to_have_pet" name="agree_to_have_pet">
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </div>
-
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-
+  
   <script>
+    document.getElementById("form")
+      .addEventListener("submit", async function (e) {
+        e.preventDefault(); // Prevent page reload
 
+        const formData = new FormData(this);
+        const body = Object.fromEntries(formData.entries());
+
+        const res = await fetch("/submit-contact-us-form", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(body)
+        });
+
+        document.getElementById("popup").style.display = "block"; // makes the message visible
+        document.getElementById('form').reset(); // resets the form
+
+        if (res.ok)
+          setTimeout(() => {
+            document.getElementById("popup").style.display = "none";
+          }, 3000);
+
+        else
+          setTimeout(() => {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("popup").style.color = "red";
+          }, 3000);
+      });
   </script>
+
 </body>
 
 </html>

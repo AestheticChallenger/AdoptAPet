@@ -105,7 +105,6 @@ main {
     height: 400px;
 }
 
-/* slide are invisible */
 .slide {
     position: absolute;
     /* stack slides */
@@ -120,7 +119,6 @@ main {
     align-items: center;
 }
 
-/* visible */
 .slide.active {
     opacity: 1;
     visibility: visible;
