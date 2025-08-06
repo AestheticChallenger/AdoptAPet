@@ -306,7 +306,7 @@ app.post("/signup", async (req, res) => {
 })
 
 //server listen
-const PORT = 10000 || 7942;
+const PORT = 10000;
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`)
 })
