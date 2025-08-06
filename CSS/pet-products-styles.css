@@ -107,14 +107,15 @@ button:hover {
 }
 
 .head {
-    background-color: rgb(32, 134, 218);
+    /* background-color: rgb(32, 134, 218); */
     border-radius: 5px;
     font-size: 17px;
     font-weight: bold;
-    padding: 10px;
+ 
     margin-bottom: 20px;
-    color: white;
+    color: #1c5373;
     text-align: center;
+    
 }
 
 .foot {
@@ -148,13 +149,13 @@ button:hover {
     position: fixed;
     right: 0;
     top: 70px;
-    width: 300px;
+    width: 500px;
     background-color: #f9f9f9;
     border: 2px solid #1c5373;
     border-radius: 10px 0 0 10px;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
     padding: 15px;
-    height: calc(100vh - 70px);
+    height: 700px;
     overflow-y: auto;
     z-index: 999;
     transform: translateX(0);

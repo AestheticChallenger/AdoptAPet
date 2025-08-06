@@ -27,6 +27,10 @@ app.get('/adopt/:name', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'AdoptAPet.html'));
 });
 
+app.get('/adoptv2', (req, res) => {
+    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'AdoptAPetV2.html'));
+});
+
 app.get('/about-developers', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'AboutDevelopers.html'));
 });

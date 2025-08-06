@@ -128,9 +128,11 @@
 
         <div class="sidebar hidden" id="cart-sidebar">
             <div class="head">
-                <p>My Cart</p>
+                <div style="text-align: left;" id="close"> X </div>
+                My Cart
             </div>
             <ul id="cart-items">
+
                 <!-- Cart items will be dynamically added here -->
             </ul>
             <div class="foot">
@@ -143,54 +145,47 @@
             </div>
         </div>
     </div>
+
+    <div id="popup"
+        style="display: none; position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px 25px; border-radius: 8px; z-index: 1000;">
+        ✅ Message sent successfully!
+    </div>
+
     <script>
-        // var count = 0;
-
-        // document.getElementById("checkout").addEventListener("click", function () {
-        //     window.open("/cart");
-        // });
-
-
-        // function addToCart(productName, productPrice) {
-        //     //add product to the cart list
-        //     var cartItems = document.getElementById("cart-items");
-        //     var price = Math.round(productPrice * 100) / 100;
-
-        //     //create a new list item
-        //     var newList = '<li>' + productName + ' - AED ' + price + '</li>';
-
-        //     cartItems.innerHTML += newList;
-
-        //     //Update the price
-        //     count += productPrice;
-        //     displayPrice();
-        // }
-
-        // function displayPrice() {
-        //     var totalCount = Math.round(count * 100) / 100;
-        //     document.getElementById("total-price").innerHTML = "Total Price: AED " + totalCount;
-        // }
-
-        // function checkout() {
-        //     //Empty the cart and reset the price
-        //     count = 0;
-        //     var cartItems = document.getElementById("cart-items");
-        //     cartItems.innerHTML = "";
-        //     document.getElementById("total-price").innerHTML = "AED 0.00";
-        // }
-
-        let count = 0;
+        let sum = 0;
         const cart = {};
 
-        const toggleCartBtn = document.getElementById("toggle-cart");
+        const cartBtn = document.getElementById("toggle-cart");
         const cartSidebar = document.getElementById("cart-sidebar");
 
-        toggleCartBtn.addEventListener("click", function () {
-            cartSidebar.classList.toggle("hidden");
+
+        cartBtn.addEventListener("click", function () {
+            cartSidebar.classList.remove("hidden");     // Always open the cart
+            cartBtn.style.display = "none";     // Always hide the cart button
         });
 
+
+        document.getElementById("close").addEventListener("click", function () {
+            cartSidebar.classList.add("hidden");        // Close the cart
+            cartBtn.style.display = "block";   // Bring back the 🛒 button
+        });
+
+
+
         document.getElementById("checkout").addEventListener("click", function () {
+            if (sum < 1) {
+                var popup = document.getElementById("popup");
+                popup.style.display = "block";
+                popup.style.backgroundColor = "red";
+                popup.innerHTML = "Please add an item to the cart!";
+                setTimeout(() => {
+                    popup.style.display = "none"
+                }, 3000);
+                return;
+            }
+
             window.open("/cart");
+            checkout();
         });
 
         function addToCart(productName, productPrice) {
@@ -208,33 +203,40 @@
             }
 
             // Update total cart price
-            count += productPrice;
+            sum += productPrice;
+            // var name = 
+            var popup = document.getElementById('popup');
+            popup.style.display = "block";
+            popup.innerHTML = `${productName.substring(0, 15)}... has been added`;
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 3000);
 
             // Refresh cart display
-            renderCart();
-            displayPrice();
+            showCart();
+            calculateTotalPrice();
         }
 
-        function renderCart() {
+        function showCart() {
             const cartItems = document.getElementById("cart-items");
             cartItems.innerHTML = ""; // Clear existing items
 
             for (let product in cart) {
                 const item = cart[product];
                 const li = document.createElement("li");
-                li.innerHTML = `${product} × ${item.quantity} — AED ${item.total.toFixed(2)}`;
+                li.innerHTML = `${product.substring(0, 15)}... × ${item.quantity} — AED ${item.total.toFixed(2)}`;
                 cartItems.appendChild(li);
             }
         }
 
-        function displayPrice() {
-            const totalCount = Math.round(count * 100) / 100;
+        function calculateTotalPrice() {
+            const totalCount = Math.round(sum * 100) / 100;
             document.getElementById("total-price").innerHTML = "Total Price: AED " + totalCount;
         }
 
         function checkout() {
             // Empty the cart and reset the price
-            count = 0;
+            sum = 0;
             if (cart.length == 0) {
                 return;
             }

@@ -98,14 +98,6 @@
 
     </main>
 
-    <!-- <script>
-        const popup = document.getElementById('popup');
-
-        function send() {
-popup.style.display = "block";
-        }
-    </script> -->
-
     <script>
         document.getElementById("form")
             .addEventListener("submit", async function (e) {
@@ -122,8 +114,8 @@ popup.style.display = "block";
                     body: JSON.stringify(body)
                 });
 
-                document.getElementById("popup").style.display = "block";
-                document.getElementById('form').reset();
+                document.getElementById("popup").style.display = "block"; // makes the message visible
+                document.getElementById('form').reset(); // resets the form
 
                 if (res.ok)
                     setTimeout(() => {
