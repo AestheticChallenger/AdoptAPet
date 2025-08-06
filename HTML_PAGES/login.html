@@ -10,7 +10,7 @@
     box-sizing: border-box;
 
 }
-body, html {
+body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: gray;
     display: flex;
@@ -18,24 +18,34 @@ body, html {
     align-items: center;
     height: 100vh;
     margin: 0;
-    padding: 0;
 
 }
-/* input{
+.container{
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0,0.2);
+}
+h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input{
     width: 90%;
     padding: 10px;
     margin: 10px 0 5px;
     border: 1px solid #cccccc;
     border-radius: 6px;
-} */
-input [type = "email"],
+}
+/* input [type = "email"],
 input [type = "password"]{
-    width: 90%;
+    width: 200%;
     padding: 12px;
     margin: 10px 0 5px;
-    border: 1px solid #cccccc;
+    border: 1px solid #bd0c0c;
     border-radius: 6px;
-}
+} */
 
 
 
@@ -52,9 +62,8 @@ input [type = "password"]{
 
 .remember{
 
+    padding: 10px;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
     margin-bottom: 15px;
     font-size: 14px;
 
@@ -102,7 +111,7 @@ input [type = "password"]{
     <div class="container">
         <div class="login-box">
 
-    <h1>LOGIN</h1>
+    <h2>LOGIN</h2>
 
     <form action="customer signin">
 
@@ -112,7 +121,7 @@ input [type = "password"]{
 
         <br><br>
         <label class="remember">
-            <input type="checkbox"> Remember me
+            <input type="checkbox">Remember me
         </label>
 
         <br><br>
@@ -120,11 +129,46 @@ input [type = "password"]{
         <button type="submit" class="log-btn" id="submit">LOGIN</button>
 
 
-        <p class="signup">Not a member? <a href="#">Sign up now</a></p>
+        <p class="signup">Not a member? <a href="Signin.html">Sign up now</a></p>
+
+        <div class="message" id="loginMessage"></div>
 
     </form>
     </div>
     </div>
+
+    <script>
+
+        const loginForm = document.getElementById("loginForm")
+        const messageDiv = document.getElementById("message")
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const res = await fetch ("http://localhost:7942/login", {
+                method: "PORT",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({email, password})
+            })
+            const data = await res.json();
+
+            if (res.ok) {
+                messageDiv.style.color = "green";
+                messageDiv.textContent = data.message;
+                // Redirect after success:
+                setTimeout(() => {
+                    window.location.href = "/profile"; // Or any other page
+                }, 1000);
+            } else {
+                messageDiv.style.color = "red";
+                messageDiv.textContent = data.message;
+            }
+        });
+        
+    </script>
     
 
 </body>

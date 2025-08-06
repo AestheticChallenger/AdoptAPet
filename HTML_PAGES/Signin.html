@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Sign Up</title>
 
     <style>
         body{
@@ -22,11 +22,7 @@
             border-radius: 10px;
             width: 350px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-       .signup-box:hover{
-            background-color: #e9b1f545;
-        }
+        } 
         
 
         h2{
@@ -79,15 +75,17 @@
 
     <div class="signup-box">
     <h2>Create Account</h2>
-    <form id="signupForm" action="signup.php" method="POST">
-        <input type="text" name="username" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email Address" required>
-        <input type="password" name="password" id="password" placeholder="Password" required>
-        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+    <form id="signupForm">
+
+        <input type="text" id="full_name" name="username" placeholder="Full Name" required>
+        <input type="email" id="email" name="email" placeholder="Email Address" required>
+        <input type="password" id="password" name="password" id="password" placeholder="Password" required>
+        <input type="password" id="confirm_password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
 
         <br>
 
-        <button type="submit" onclick="signUp()">Sign Up</button>
+        <button type="submit">Sign Up</button>
+        <div id="messageBox" class="message"></div>
 
     </form>
 </div>
@@ -107,7 +105,7 @@
             const password = document.getElementById('password').value.trim();
             const confirm_password = document.getElementById('confirm_password').value.trim();   
 
-            if(!email || !password || !confirm_password || !full_name){
+            if(!full_name || !email || !password || !confirm_password){
                 messageBox.textContent = "Please fill all fields."
                 messageBox.className = "message error"
                 return;
@@ -125,16 +123,16 @@
                 return;
             }
 
-            //setting empty array
-            let users = JSON.parse()
+            // //setting empty array
+            // let users = JSON.parse()
 
-            //checks if the user already exists
-            const existUser = users.find(user => user.email === email);
+            // //checks if the user already exists
+            // const existUser = users.find(user => user.email === email);
 
-            if (exitsUser){
-                message.textContent = 'Email already registered.'
-                return;
-            }
+            // if (exitsUser){
+            //     message.textContent = 'Email already registered.'
+            //     return;
+            // }
 
 
             try{

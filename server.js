@@ -220,16 +220,21 @@ const userSchema = new mongoose.Schema({
 
     email: {
      type: String,
-     require: true,   
+     require: true,
+     //for no duplicate emeil
+     unique: true   
     },
 
     password: {
     type: String,
     require: true,
     }
-},{timestamps: true})
+}, {timestamps: true})
 
 const userModel = mongoose.model("users", userSchema)
+
+
+//signUp route
 
 app.post("/signup", async (req, res) => {
 
@@ -255,18 +260,54 @@ app.post("/signup", async (req, res) => {
             return res.status(400).json({message: "Email already registered."});
         }
 
-        const newUser = new unserModel({
+        const newUser = new userModel({
             full_name,
             email,
             password
         })
 
         await newUser.save();
+        console.log("New user created: ", newUser)
 
         res.status(201).json({message: "Account created successfully!"});
 
-    }catch (error){
-        console.error("SignUp error: ", error)
+    }catch (err){
+        console.error("SignUp error: ", err)
         res.status(500).json({message: "Internal server error."});
     }
 })
+
+//server listen
+const PORT = 7942
+app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`)
+})
+
+
+
+// ===== User Login Route =====
+app.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ message: "Email and password are required." });
+    }
+
+    try {
+        const user = await userModel.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ message: "User not found." });
+        }
+
+        if (user.password !== password) {
+            return res.status(401).json({ message: "Incorrect password." });
+        }
+
+        // Login successful
+        return res.status(200).json({ message: "Login successful!", user });
+    } catch (err) {
+        console.error("Login error:", err);
+        return res.status(500).json({ message: "Internal server error." });
+    }
+});
