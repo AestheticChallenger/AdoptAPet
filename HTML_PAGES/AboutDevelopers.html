@@ -10,18 +10,6 @@
 </head>
 
 <body>
-   <script>
-        const url = window.location.pathname;
-        const pathParts = url.split('/');
-
-        if (pathParts.length > 2) {
-            var userName = pathParts[pathParts.length - 1];
-            document.getElementById('pet-products').href += `/${userName}`;
-            document.getElementById('adopt').href += `/${userName}`;
-            document.getElementById('about-developers').href += `/${userName}`;
-            document.getElementById('login').href += `/${userName}`; // chnage this
-        }
-    </script>
     <header class="navbar">
         <img src="/IMAGES/logo.png" alt="Logo" class="logo">
         <nav class="nav-links">
@@ -40,11 +28,14 @@
             <h2>Meet the Developers</h2>
             <div class="dev-info">
 
-            <!--Developer: Aysha-->
+                <!--Developer: Aysha-->
                 <div class="dev-card">
                     <h3>Aysha</h3>
-                    <p>Hello! I’m Aysha Hira, currently pursuing my degree in Computer Science. I’m passionate about web development, especially the creativity and structure behind building intuitive and functional user interfaces. Over the past semester, I’ve developed growing interest and experience in full-stack technologies, especially using JavaScript, Node.js, and MongoDB.</p>
-                    
+                    <p>Hello! I’m Aysha Hira, currently pursuing my degree in Computer Science. I’m passionate about web
+                        development, especially the creativity and structure behind building intuitive and functional
+                        user interfaces. Over the past semester, I’ve developed growing interest and experience in
+                        full-stack technologies, especially using JavaScript, Node.js, and MongoDB.</p>
+
                     <strong>📌 Talents & Skills:</strong>
                     <ul>
                         <li>Skilled in HTML5, CSS, and JavaScript</li>
@@ -61,12 +52,15 @@
                         <li>Creating minimalist, user-friendly interfaces</li>
                     </ul>
                 </div>
-                
+
                 <!--Developer: Mehejat-->
                 <div class="dev-card">
-                    
+
                     <h3>Mehejat</h3>
-                    <p>Hello! I’m Mahejat, a frontend developer who loves bringing designs to life using HTML and CSS. I enjoy turning ideas into elegant, responsive layouts that work beautifully on all screen sizes. I’m especially drawn to the creative freedom of frontend design and building interfaces that users find easy and enjoyable to use.</p>
+                    <p>Hello! I’m Mahejat, a frontend developer who loves bringing designs to life using HTML and CSS. I
+                        enjoy turning ideas into elegant, responsive layouts that work beautifully on all screen sizes.
+                        I’m especially drawn to the creative freedom of frontend design and building interfaces that
+                        users find easy and enjoyable to use.</p>
 
                     <strong>📌 Talents & Skills:</strong>
                     <ul>
@@ -74,10 +68,10 @@
                         <li>Responsive design & layout structuring</li>
                         <li>Modern UI/UX design principles</li>
                         <li>Version control with Git and GitHub</li>
-                        
+
                     </ul>
 
-                    <strong>🎯 Interests:</strong> 
+                    <strong>🎯 Interests:</strong>
 
                     <ul>
                         <li>Exploring CSS animations and transitions</li>
@@ -87,7 +81,7 @@
                     </ul>
                 </div>
 
- 
+
             </div>
         </section>
 
@@ -145,6 +139,17 @@
     </main>
 
     <script>
+        const url = window.location.pathname;
+        const pathParts = url.split('/');
+
+        if (pathParts.length > 2) {
+            var userName = pathParts[pathParts.length - 1];
+            document.getElementById('pet-products').href += `/${userName}`;
+            document.getElementById('adopt').href += `/${userName}`;
+            document.getElementById('about-developers').href += `/${userName}`;
+            document.getElementById('login').href += `/${userName}`; // chnage this
+        }
+
         document.getElementById("form")
             .addEventListener("submit", async function (e) {
                 e.preventDefault(); // Prevent page reload

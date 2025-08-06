@@ -8,66 +8,32 @@
     <link rel="stylesheet" href="/CSS/navigation.css">
     <link rel="stylesheet" href="/CSS/adopt-styles.css">
     <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content {
-            position: relative;
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 0;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 700px;
-            height: 90%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modal-content iframe {
-            flex: 1;
-            width: 100%;
-            border: none;
-            border-radius: 0 0 10px 10px;
-        }
-
-        .close-btn {
-            font-size: 28px;
-            color: #aaa;
-            padding: 10px 20px;
-            cursor: pointer;
-            align-self: flex-end;
-        }
-
-        .close-btn:hover {
-            color: #000;
-        }
-
         /* body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      display: flex;
-      justify-content: center;
-      padding: 30px;
-    } */
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+        } */
 
         .form-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* center perfectly */
             background: white;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            height: 100%;
-            align-content: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 50%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            /* scroll if content too tall */
+            z-index: 9999;
+            /* puts this elemesnt on top of which ever elements that have less than this elements value.. cool */
+            scrollbar-width: none;
         }
 
         h2 {
@@ -129,7 +95,7 @@
 
     <main>
         <section class="adopt-section">
-            <div class="form-container" style="display: none;">
+            <div class="form-container" style="display: none;" id="form-container">
                 <h2>Pet Adoption Form</h2>
                 <form method="post" style="margin: 5%;" id="form">
 
@@ -205,6 +171,7 @@
                     </div>
 
                     <button type="submit">Submit</button>
+                    <button type="button" id="cancel">Cancel</button>
                 </form>
             </div>
             <h1>Adopt a Pet</h1>
@@ -316,41 +283,91 @@
 
             </div>
         </section>
-    </main>
-    <!-- Modal Popup -->
-    <div id="customModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <iframe id="modalIframe" src="" frameborder="0"></iframe>
+
+        <div id="popup"
+            style="display: none; position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px 25px; border-radius: 8px; z-index: 1000;">
+            ✅ Adoption request sent successfully!
         </div>
-    </div>
+    </main>
 
     <script>
+        const url = window.location.pathname;
+        const pathParts = url.split('/');
+
+        let userName = 'Guest'
+        if (pathParts.length > 2)
+            userName = pathParts[2];
+
         function enterAdoptionFormFor(requestedPet) {
             console.log("Form clicked")
-            const modal = document.getElementById("customModal");
-            const iframe = document.getElementById("modalIframe");
+            const formContainer = document.getElementById('form-container');
+            formContainer.style.display = "block"
 
-            iframe.src = `/adoption-form/${name}/${requestedPet}`;
-            modal.style.display = "block";
-        }
+            const petName = document.getElementById('pet_name');
+            petName.value = requestedPet;
+            petName.disabled = true;
 
-        function closeModal() {
-            const modal = document.getElementById("customModal");
-            const iframe = document.getElementById("modalIframe");
+            if (pathParts.length > 2) { // user logged in.. then autofill the info
+                fetch(`/userInfo/${userName}`)
+                    .then(res => res.json())
+                    .then(data => {
 
-            iframe.src = ""; // optional: clear content when closing
-            modal.style.display = "none";
-        }
+                        const user = data.user[0];
+                        console.log(user);
+                        document.getElementById('full_name').value = user.full_name
+                        document.getElementById('email').value = user.email;
+                        if (user.address)
+                            document.getElementById('address').value = user.address;
 
-        // Optional: close modal when clicking outside it
-        window.onclick = function (event) {
-            const modal = document.getElementById("customModal");
-            if (event.target === modal) {
-                closeModal();
+                        if (user.contact_number)
+                            document.getElementById('contact_number').value = user.contact_number;
+
+                        if (user.occupation)
+                            document.getElementById('occupation').value = user.occupation;
+                    })
+
+                    .catch(error => console.log(error));
             }
-        };
 
+        }
+
+        document.getElementById('cancel').addEventListener('click', () => {
+            form.reset();
+            document.getElementById('form-container').style.display = "none";
+
+        });
+
+
+        document.getElementById("form")
+            .addEventListener("submit", async function (event) {
+                event.preventDefault(); // Prevent page reload
+
+                const formData = new FormData(this);
+                const body = Object.fromEntries(formData.entries());
+
+                const res = await fetch("/submit-contact-us-form", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                document.getElementById("popup").style.display = "block"; // makes the message visible
+                document.getElementById('form').reset(); // resets the form
+                document.getElementById('form-container').style.display = "none"; // hides the form's container
+
+                if (res.ok)
+                    setTimeout(() => {
+                        document.getElementById("popup").style.display = "none";
+                    }, 3000);
+
+                else
+                    setTimeout(() => {
+                        document.getElementById("popup").style.display = "none";
+                        document.getElementById("popup").style.color = "red";
+                    }, 3000);
+            });
 
 
         // for slideshow

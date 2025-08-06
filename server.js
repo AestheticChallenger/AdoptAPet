@@ -76,6 +76,7 @@ app.listen(7942, () => {
 
 // MongoDB - Database
 const mongoose = require('mongoose');
+const { type } = require('os');
 mongoose.connect('mongodb://localhost:27017/adopt-a-pet')
     .then(() => console.log('MongoDB connected'))
     .catch(() => console.log('error connecting'));
@@ -247,6 +248,14 @@ const userSchema = new mongoose.Schema({
 
     address: {
         type: String
+    },
+
+    contact_number: {
+        type: Number
+    },
+
+    occupation: {
+        type: String
     }
 }, { timestamps: true })
 
@@ -346,6 +355,83 @@ app.get('/userInfo/:name', async (req, res) => {
         return res.json({ user });
     } catch (error) {
         console.log("Error fetching user:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+app.get('/profile/:name', async (req, res) => {
+    const userName = req.params.name;
+
+    try {
+        const user = await userModel.find({ full_name: userName });
+
+        if (!user || user.length === 0)
+            return res.status(404).json({ msg: "User not Found!" });
+
+        return res.json({ user });
+        
+    } catch (error) {
+        console.log("Error fetching user:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+app.get('/profile/:name', async (req, res) => {
+    const userName = req.params.name;
+
+    try {
+        const user = await userModel.find({ full_name: userName });
+
+        if (!user || user.length === 0)
+            return res.status(404).json({ msg: "User not Found!" });
+
+        return res.json({ user });
+        
+    } catch (error) {
+        console.log("Error fetching user:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+app.put("/update-profile", async (req, res) => {
+    const { full_name, address, contact_number, occupation } = req.body;
+
+    if (!full_name || !address || !contact_number || !occupation) {
+        return res.status(400).json({ message: "Missing required fields." });
+    }
+
+    try {
+        const updatedUser = await userModel.findOneAndUpdate(
+            { full_name: full_name }, // find by name
+            {
+                full_name, 
+                address,
+                contact_number,
+                occupation
+            },
+            { new: true, overwrite: false } // overwrite: false to not replace whole doc
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        res.status(200).json({ message: "Profile updated successfully.", user: updatedUser });
+    } catch (error) {
+        console.error("PUT update error:", error);
+        res.status(500).json({ message: "Server error while updating profile." });
+    }
+});
+
+app.get('/get-forms/:name', async (req, res) => {
+    const userName = req.params.name;
+
+    try {
+        const forms = await adoptionFormModel.find({ full_name: userName });
+
+        return res.status(200).json(forms);  // Always return 200 with array
+    } catch (error) {
+        console.log("Error fetching adoption forms:", error);
         res.status(500).json({ message: "Server error" });
     }
 });

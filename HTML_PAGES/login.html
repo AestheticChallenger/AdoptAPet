@@ -112,9 +112,6 @@ input [type = "password"]{
 </head>
 
 <body>
-
-
-
     <div class="container">
         <div class="login-box">
 
@@ -170,7 +167,7 @@ input [type = "password"]{
                 // Redirect after success:
                 setTimeout(() => {
                     var userName = data.user.full_name;
-                     window.location.href = `/home/${encodeURIComponent(userName)}`;
+                    window.location.href = `/home/${encodeURIComponent(userName)}`;
                 }, 1000);
             } else {
                 messageDiv.style.color = "red";
