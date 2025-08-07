@@ -1,150 +1,3 @@
-<!-- <html>
-
-<head>
-    <meta charset="utf-8">
-    <title>HomePage</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-size: cover;
-            background-position: center;
-            background-color: #8e8e8e;
-            margin: 0;
-            padding: 0;
-            color: #000000;
-        }
-
-        .container {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            /* separates left and right content */
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #f0f0f0;
-            
-            /* optional */
-        }
-
-        .pageinfo {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-            justify-content: flex-end;
-            /* align all links and button to the right */
-            font-size: medium;
-        }
-
-        .logo_2 {
-            width: 150px;
-            height: auto;
-            margin-right: auto;
-            /* pushes everything else to the right */
-        }
-
-        .pageinfo a,
-        .pageinfo button {
-            text-decoration: none;
-            color: #000000;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: large;
-            padding: 15px 30px;
-        }
-
-        .pageinfo a:hover,
-        .pageinfo button:hover {
-            color: #1c5373;
-            /* Red color on hover */
-        }
-
-        .intro {
-            background-color: #1c5373;
-            /* Light grey background for intro section */
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            border-radius: 10px;
-        }
-
-        .intro h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .intro p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .intro img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            /* Rounded corners */
-        }
-
-        .full-width-image {
-           margin-top: 10px;;
-            text-align: center;
-        }
-
-        .full-width-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            /* Rounded corners */
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container">
-        <img src="IMAGES/logo_2.png" class="logo_2">
-
-        <div class="pageinfo">
-            <a href="/">Home</a>
-            <a href="/pet-products">Pet Products</a>
-            <a href="/adopt">Adopt a Pet</a>
-            <!-- <a href="HTML_PAGES/HappilyAdoptedPets.html">Happily Adopted Pets</a> 
-            <a href="/about-developers">Contact Us</a>
-        </div>
-    </div>
-
-    <div class="intro">
-        <div>
-            <h1>OUR STORY</h1>
-            <p>Our mission is to find loving homes for pets in need.</p>
-        </div>
-        <div>
-            <img src="IMAGES/introimage.jpeg" alt="Image">
-        </div>
-    </div>
-
-    <div class="full-width-image">
-        <div class="intro">
-            <div>
-                <h1>Why adopt not shop?</h1>
-                <p>Our mission is to find loving homes for pets in need.</p>
-            </div>
-
-            <div>
-                <img src="IMAGES/introimage2.jpeg" alt="Large Image">
-            </div>
-        </div>
-    </div>
-
-</body>
-
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -191,6 +44,11 @@
         .section-image {
             flex: 1 1 300px;
         }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
         .form-container {
             position: fixed;
@@ -212,10 +70,7 @@
             scrollbar-width: none;
         }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+        
 
         .form-group {
             display: flex;
@@ -228,6 +83,7 @@
             width: 220px;
             font-weight: bold;
             flex: 1;
+            gap: 2px;
         }
 
         .form-group input,
@@ -241,18 +97,20 @@
         }
 
         button {
-            width: 20%;
+            width: 30%;
             padding: 12px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
+            background-color: white;
+            color: #1c5373;
+            border: 2px solid #1c5373;
             border-radius: 6px;
             font-size: 16px;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #1c5373;
+            border: 2px solid #1c5373;
+            color: #ffffff;
         }
 
         .profile {
@@ -261,8 +119,7 @@
             /* Stack items vertically */
             align-items: stretch;
             /* Stretch inner width */
-            width: 350px;
-            max-height: 90vh;
+            width: 400px;
             overflow-y: auto;
 
             background-color: #ffffff;
@@ -306,7 +163,7 @@
         <div class="section-text">
             <h1>Why Adopt, Not Shop?</h1>
             <p>By adopting, you're not only giving a pet a loving home but also taking a stand against animal cruelty
-                and ovNerbreedMMMMMing. Make a difference — choose adoption.</p>
+                and overbreeding. Make a difference — choose adoption.</p>
         </div>
         <div class="section-image">
             <img src="/IMAGES/introimage2.jpeg" alt="Pet adoption scene">
@@ -341,13 +198,13 @@
                 <input type="text" id="occupation" name="occupation" placeholder="Enter jobtitle" disabled required>
             </div>
 
-            <button type="button" id="edit">Edit</button>
-            <button type="button" id="cancel">Cancel</button>
-        </form>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button type="button" id="edit">Edit</button>
+                <button type="button" id="cancel-profile">Cancel</button>
+                <button type="button" id="signout">Signout</button>
+            </div>
 
-        <div id="forms-submitted">
-            <h2> Adoption Forms Submitted</h2>
-        </div>
+        </form>
     </div>
 
     <script>
@@ -357,7 +214,7 @@
         var count = 0;
         var userName = 'Guest';
         if (pathParts.length > 2) {
-            userName = pathParts[pathParts.length - 1];
+            userName = pathParts[2];
             document.getElementById('pet-products').href += `/${userName}`;
             document.getElementById('adopt').href += `/${userName}`;
             document.getElementById('about-developers').href += `/${userName}`;
@@ -479,6 +336,17 @@
 
                 }
 
+            });
+
+            document.getElementById('cancel-profile').addEventListener('click', () => {
+                address.disabled = true;
+                contact_number.disabled = true;
+                occupation.disabled = true;
+            });
+
+
+            document.getElementById('signout').addEventListener('click', () => {
+                window.location.href = '/';
             });
 
 

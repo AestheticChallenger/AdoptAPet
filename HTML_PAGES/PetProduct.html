@@ -17,7 +17,7 @@
     <header class="navbar">
         <img src="/IMAGES/logo_2.png" alt="logo_2" class="logo_2">
         <nav class="nav-links">
-            <a href="/pet-products" id="pet-products">Pet Products</a>
+            <a href="/" id="home">Home</a>
             <a href="/adopt" id="adopt">Adopt a Pet</a>
             <a href="/about-developers" id="about-developers">Contact Us</a>
             <a href="/login" id="login">Login</a>
@@ -139,7 +139,7 @@
                 <h3>Total</h3>
                 <h2 id="total-price" style="color: #5a5959;">AED 0.00</h2>
                 <br>
-                <button type="button" class="blue" id="checkout">
+                <button type="button" id="checkout">
                     Checkout
                 </button>
             </div>
@@ -160,10 +160,97 @@
 
         const url = window.location.pathname;
         const pathParts = url.split('/');
+        var userName = 'Guest';
+
+        cartBtn.addEventListener("click", function () {
+            cartSidebar.classList.remove("hidden");     // Always open the cart
+            cartBtn.style.display = "none";     // Always hide the cart button
+        });
+
+
+        document.getElementById("close").addEventListener("click", function () {
+            cartSidebar.classList.add("hidden");        // Close the cart
+            cartBtn.style.display = "block";   // Bring back the 🛒 button
+        });
+
+        document.getElementById("checkout").addEventListener("click", function () {
+            if (sum < 1) {
+                var popup = document.getElementById("popup");
+                popup.style.display = "block";
+                popup.style.backgroundColor = "red";
+                popup.innerHTML = "Please add an item to the cart!";
+                setTimeout(() => {
+                    popup.style.backgroundColor = "green";
+                    popup.style.display = "none"
+                }, 500);
+                return;
+            }
+
+            window.open(`/cart/${userName}`);
+            checkout();
+        });
+
+        function addToCart(productName, productPrice) {
+            // If product already in cart, increase quantity
+            if (cart[productName]) {
+                cart[productName].quantity += 1;
+                cart[productName].total = Math.round((cart[productName].quantity * productPrice) * 100) / 100;
+            } else {
+                // Add new product to cart
+                cart[productName] = {
+                    price: productPrice,
+                    quantity: 1,
+                    total: Math.round(productPrice * 100) / 100
+                };
+            }
+
+            // Update total cart price
+            sum += productPrice;
+            // var name = 
+            var popup = document.getElementById('popup');
+            popup.style.display = "block";
+            popup.innerHTML = `${productName.substring(0, 15)}... has been added`;
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 3000);
+
+            // Refresh cart display
+            showCart();
+            calculateTotalPrice();
+        }
+
+        function showCart() {
+            const cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = ""; // Clear existing items
+
+            for (let product in cart) {
+                const item = cart[product];
+                const li = document.createElement("li");
+                li.innerHTML = `${product.substring(0, 15)}... × ${item.quantity} — AED ${item.total.toFixed(2)}`;
+                cartItems.appendChild(li);
+            }
+        }
+
+        function calculateTotalPrice() {
+            const totalCount = Math.round(sum * 100) / 100;
+            document.getElementById("total-price").innerHTML = "Total Price: AED " + totalCount;
+        }
+
+        function checkout() {
+            // Empty the cart and reset the price
+            sum = 0;
+            if (cart.length == 0) {
+                return;
+            }
+            for (let product in cart)
+                delete cart[product];
+            document.getElementById("cart-items").innerHTML = "";
+            document.getElementById("total-price").innerHTML = "AED 0.00";
+        }
 
         if (pathParts.length > 2) {
-            userName = pathParts[pathParts.length - 1];
-            document.getElementById('pet-products').href += `/${userName}`;
+            userName = pathParts[2];
+             document.getElementById('home').href += `home/${userName}`;
             document.getElementById('adopt').href += `/${userName}`;
             document.getElementById('about-developers').href += `/${userName}`;
             document.getElementById('login').removeAttribute('href'); // removes the link after signing in
@@ -286,96 +373,22 @@
 
             });
 
+            // document.getElementById('cancel').addEventListener('click', () => {
+            //     address.disabled = true;
+            //     contact_number.disabled = true;
+            //     occupation.disabled = true;
+            // });
+
+
+            // document.getElementById('signout').addEventListener('click', () => {
+            //     window.location.href = '/';
+            // });
+
+
 
         }
 
 
-        cartBtn.addEventListener("click", function () {
-            cartSidebar.classList.remove("hidden");     // Always open the cart
-            cartBtn.style.display = "none";     // Always hide the cart button
-        });
-
-
-        document.getElementById("close").addEventListener("click", function () {
-            cartSidebar.classList.add("hidden");        // Close the cart
-            cartBtn.style.display = "block";   // Bring back the 🛒 button
-        });
-
-
-
-        document.getElementById("checkout").addEventListener("click", function () {
-            if (sum < 1) {
-                var popup = document.getElementById("popup");
-                popup.style.display = "block";
-                popup.style.backgroundColor = "red";
-                popup.innerHTML = "Please add an item to the cart!";
-                setTimeout(() => {
-                    popup.style.display = "none"
-                }, 3000);
-                return;
-            }
-
-            window.open("/cart");
-            checkout();
-        });
-
-        function addToCart(productName, productPrice) {
-            // If product already in cart, increase quantity
-            if (cart[productName]) {
-                cart[productName].quantity += 1;
-                cart[productName].total = Math.round((cart[productName].quantity * productPrice) * 100) / 100;
-            } else {
-                // Add new product to cart
-                cart[productName] = {
-                    price: productPrice,
-                    quantity: 1,
-                    total: Math.round(productPrice * 100) / 100
-                };
-            }
-
-            // Update total cart price
-            sum += productPrice;
-            // var name = 
-            var popup = document.getElementById('popup');
-            popup.style.display = "block";
-            popup.innerHTML = `${productName.substring(0, 15)}... has been added`;
-            setTimeout(() => {
-                popup.style.display = "none";
-            }, 3000);
-
-            // Refresh cart display
-            showCart();
-            calculateTotalPrice();
-        }
-
-        function showCart() {
-            const cartItems = document.getElementById("cart-items");
-            cartItems.innerHTML = ""; // Clear existing items
-
-            for (let product in cart) {
-                const item = cart[product];
-                const li = document.createElement("li");
-                li.innerHTML = `${product.substring(0, 15)}... × ${item.quantity} — AED ${item.total.toFixed(2)}`;
-                cartItems.appendChild(li);
-            }
-        }
-
-        function calculateTotalPrice() {
-            const totalCount = Math.round(sum * 100) / 100;
-            document.getElementById("total-price").innerHTML = "Total Price: AED " + totalCount;
-        }
-
-        function checkout() {
-            // Empty the cart and reset the price
-            sum = 0;
-            if (cart.length == 0) {
-                return;
-            }
-            for (let product in cart)
-                delete cart[product];
-            document.getElementById("cart-items").innerHTML = "";
-            document.getElementById("total-price").innerHTML = "AED 0.00";
-        }
     </script>
 
 </body>

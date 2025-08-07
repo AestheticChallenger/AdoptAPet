@@ -96,7 +96,7 @@
         const messageBox = document.getElementById('messageBox')
 
         form.addEventListener('submit', async function (e) {
-            e.preventDefault()
+            e.preventDefault();
             
             const full_name = document.getElementById('full_name').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -120,18 +120,6 @@
                 messageBox.className = "message error"
                 return;
             }
-
-            // //setting empty array
-            // let users = JSON.parse()
-
-            // //checks if the user already exists
-            // const existUser = users.find(user => user.email === email);
-
-            // if (exitsUser){
-            //     message.textContent = 'Email already registered.'
-            //     return;
-            // }
-
 
             try{
                 const res = await fetch("http://localhost:7942/signup",{

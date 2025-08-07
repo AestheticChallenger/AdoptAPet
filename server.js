@@ -2,11 +2,6 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-require('dotenv').config();
-
-const cors = require('cors');
-app.use(cors()); // Add this near the top of your file
-
 // Serve static folders with proper capitalization
 app.use('/IMAGES', express.static(path.join(__dirname, 'IMAGES')));
 app.use('/CSS', express.static(path.join(__dirname, 'CSS')));
@@ -65,6 +60,10 @@ app.get('/cart', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'Payment.html'));
 });
 
+app.get('/cart/:name', (req, res) => {
+    res.sendFile(path.join(__dirname, 'HTML_PAGES', 'Payment.html'));
+});
+
 app.get('/profile', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'profile.html'));
 })
@@ -73,13 +72,16 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'login.html'));
 });
 
+app.listen(7942, () => {
+    console.log('🚀 Server is running at http://localhost:7942');
+});
+
 // ===================================================================
 
 // MongoDB - Database
 const mongoose = require('mongoose');
 const { type } = require('os');
-const mongoUri = process.env.MONGODB_URI;
-mongoose.connect(mongoUri)
+mongoose.connect('mongodb://localhost:27017/adopt-a-pet')
     .then(() => console.log('MongoDB connected'))
     .catch(() => console.log('error connecting'));
 
@@ -225,13 +227,10 @@ app.post("/submit-contact-us-form", async (req, res) => {
 
 // ===================================================================
 
-// Order Page here => Mehejat
-// cart
-
 // User Form -> login / sign in
-
 const userSchema = new mongoose.Schema({
     full_name: {
+        unique: true,
         type: String,
         require: true,
     },
@@ -263,9 +262,7 @@ const userSchema = new mongoose.Schema({
 
 const userModel = mongoose.model("users", userSchema)
 
-
 //signUp route
-
 app.post("/signup", async (req, res) => {
 
     const { full_name, email, password, confirm_password } = req.body
@@ -290,6 +287,10 @@ app.post("/signup", async (req, res) => {
             return res.status(400).json({ message: "Email already registered." });
         }
 
+        if (await userModel.findOne({full_name})) {
+            return res.status(400).json({ message: "Name already registered." });
+        }
+
         const newUser = new userModel({
             full_name,
             email,
@@ -306,13 +307,6 @@ app.post("/signup", async (req, res) => {
         res.status(500).json({ message: "Internal server error." });
     }
 })
-
-//server listen
-const PORT = 10000;
-app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`)
-})
-
 
 
 // ===== User Login Route =====
@@ -437,3 +431,63 @@ app.get('/get-forms/:name', async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+
+// const cartSchema = new mongoose.Schema({
+//     full_name: {
+//         type: String,
+//         required: true
+//     },
+    
+//     product_name: {
+//         type: String,
+//         required: true
+//     },
+
+//     quantity: {
+//         type: Number,
+//         required: true
+//     },
+
+//     price: {
+//         type: Number,
+//         required: true,
+//     },
+
+// }, { timestamps: true });
+
+// const cartModel = mongoose.model("cart", cartSchema);
+
+// app.post("/submit-cart", async (req, res) => {
+//     const body = req.body;
+
+//     if (!body || !body.full_name || !body.product_name || !body.quantity || !body.price)
+//         return res.status(400).json({
+//             msg: `fields are required: 
+//                 ${body}, ${body.product_name}, ${body.quantity}, ${body.price}`
+//         });
+
+
+//     const cartDetails = await cartModel.create({
+//         full_name: body.full_name,
+//         product_name: body.product_name,
+//         quantity: body.quantity,
+//         price: body.price,
+//     });
+
+//     console.log("form: " + cartDetails);
+//     return res.status(201).json({ msg: "success!" });
+// });
+
+// app.get("/get-cart/:name", async (req, res) => {
+//     const userName = req.params.name;
+
+//     try {
+//         const forms = await cartModel.find({ full_name: userName });
+
+//         return res.status(200).json(forms);  // Always return 200 with array
+//     } catch (error) {
+//         console.log("Error fetching adoption forms:", error);
+//         res.status(500).json({ message: "Server error" });
+//     }
+// });

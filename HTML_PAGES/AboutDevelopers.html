@@ -13,6 +13,7 @@
     <header class="navbar">
         <img src="/IMAGES/logo_2.png" alt="logo_2" class="logo_2">
         <nav class="nav-links">
+              <a href="/" id="home">Home</a>
             <a href="/pet-products" id="pet-products">Pet Products</a>
             <a href="/adopt" id="adopt">Adopt a Pet</a>
             <a href="/about-developers" id="about-developers">Contact Us</a>
@@ -142,8 +143,40 @@
         const url = window.location.pathname;
         const pathParts = url.split('/');
 
+
+        document.getElementById("form")
+            .addEventListener("submit", async function (e) {
+                e.preventDefault(); // Prevent page reload
+
+                const formData = new FormData(this);
+                const body = Object.fromEntries(formData.entries());
+
+                const res = await fetch("/submit-contact-us-form", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                document.getElementById("popup").style.display = "block"; // makes the message visible
+                document.getElementById('form').reset(); // resets the form
+
+                if (res.ok)
+                    setTimeout(() => {
+                        document.getElementById("popup").style.display = "none";
+                    }, 3000);
+
+                else
+                    setTimeout(() => {
+                        document.getElementById("popup").style.display = "none";
+                        document.getElementById("popup").style.color = "red";
+                    }, 3000);
+            });
+
         if (pathParts.length > 2) {
-            userName = pathParts[pathParts.length - 1];
+            userName = pathParts[2];
+             document.getElementById('home').href += `home/${userName}`;
             document.getElementById('pet-products').href += `/${userName}`;
             document.getElementById('adopt').href += `/${userName}`;
             document.getElementById('about-developers').href += `/${userName}`;
@@ -241,11 +274,10 @@
                         occupation: occupation.value
                     };
 
-
                     try {
                         const res = await fetch("/update-profile", {
                             method: "PUT",
-                            headers: {
+                             headers: {
                                 "Content-Type": "application/json"
                             },
                             body: JSON.stringify(updateData)
@@ -270,35 +302,6 @@
 
         }
 
-        document.getElementById("form")
-            .addEventListener("submit", async function (e) {
-                e.preventDefault(); // Prevent page reload
-
-                const formData = new FormData(this);
-                const body = Object.fromEntries(formData.entries());
-
-                const res = await fetch("/submit-contact-us-form", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(body)
-                });
-
-                document.getElementById("popup").style.display = "block"; // makes the message visible
-                document.getElementById('form').reset(); // resets the form
-
-                if (res.ok)
-                    setTimeout(() => {
-                        document.getElementById("popup").style.display = "none";
-                    }, 3000);
-
-                else
-                    setTimeout(() => {
-                        document.getElementById("popup").style.display = "none";
-                        document.getElementById("popup").style.color = "red";
-                    }, 3000);
-            });
     </script>
 
 </body>

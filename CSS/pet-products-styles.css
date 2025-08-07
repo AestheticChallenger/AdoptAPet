@@ -6,7 +6,7 @@ h2 {
 button {
     width: 200px;
     height: 50px;
-    border: none;
+    border: 2px solid #1c5373;
     border-radius: 10px;
     font-size: 19px;
     font-weight: bold;

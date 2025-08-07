@@ -7,91 +7,30 @@
 
     <meta charset="UTF-8">
     <title>Checkout</title>
+    <link rel="stylesheet" href="/CSS/navigation.css">
 
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: gray;
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 200%;
         }
- 
+
         .container {
             background-color: rgb(247, 246, 246);
             width: 450px;
-            /* max-width: 600px; */
             padding: 20px;
             text-align: center;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        /* .logo_2{
-            width: 150px;
-            height: auto;
-        }
-
-        .nav-links a{
-            text-decoration: none;
-            color: #333;
-            font-weight: 20px;
-            margin-left: 20px;
-
-        }
-
-        .nav-links a:hover{
-            color: #ff0000;
-        } */
-
-
-        /* .pageinfo {
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: auto;
-            padding: 10px 400px;
-            background-color: #ffffff;
-        }
-
-        .pageinfo a,
-        .pageinfo button {
-            text-decoration: none;
-            color: #000000;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-
-        .pageinfo a:hover,
-        .pageinfo button:hover {
-            color: #ff0000;
-        } */
-
-        
         h1 {
             color: black;
             margin-bottom: 25px;
 
         }
-
-        /* .checkout-form {
-            background-color: #fff;
-            width: 90%;
-            padding: 30px;
-            margin: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2)
-
-        } */
-         
 
         .checkout-form label {
             display: block;
@@ -114,21 +53,23 @@
         .checkout-form button {
             width: 70%;
             padding: 15px;
-            background-color: rgb(10, 102, 82);
-            color: white;
+            background-color: rgb(255, 255, 255);
+            color: #1c5373;
             padding: 15px;
             font-size: 16px;
-            border: none;
+            border: 2px solid #1c5373;
             border-radius: 10px;
             margin-top: 15px;
             cursor: pointer;
+
         }
 
         .checkout-form button:hover {
-            background-color: rgb(41, 141, 169);
+            background-color: #1c5373;
+            color: white;
         }
 
-        .checkout-form{
+        .checkout-form {
             padding: 20px;
         }
 
@@ -138,67 +79,75 @@
 </head>
 
 <body>
-
-    <!-- <header class="navbar">
-        <img src="/IMAGES/logo_2.png" alt="logo_2" class="logo_2">
-        <nav class="nav-links">
-            <a href="/">Home</a>
-            <a href="/pet-products">Pet Products</a>
-            <a href="/adopt">Adopt a Pet</a>
-            <a href="/about-developers">Contact Us</a>
-        </nav>
-    </header> -->
     <div class="container">
 
-    <h1>Checkout</h1>
+        <h1>Checkout</h1>
 
-    <form class="checkout-form" action="#" method="post">
-        <label for="name">Name</label>
-        <input type="text" id="name" placeholder="Enter your name" required>
+        <form class="checkout-form" action="#" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
 
-        <br>
+            <br>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
 
-        <br>
+            <br>
 
-        <label for="address">Address</label>
-        <input type="text" id="address" placeholder="Enter your Shipping Address" required>
+            <label for="address">Address</label>
+            <input type="text" id="address" placeholder="Enter your Shipping Address" required>
 
-        <br>
+            <br>
 
-        <label for="country">Country</label>
-        <select type="text" id="country">
-            <option value="UAE">UAE</option>
-        </select>
+            <label for="country">Country</label>
+            <select type="text" id="country">
+                <option value="UAE">UAE</option>
+            </select>
 
-        <br>
+            <br>
 
-        <label for="city">City</label>
-        <select type="text" id="city" required>
-            <option value="Adu Dhabi">Adu Dhabhi</option>
-            <option value="Dubai">Dubai</option>
-            <option value="Sharjah">Sharjah</option>
-            <option value="Al Ain">Al Ain</option>
-            <option value="Ras Al-Khaimah">Ras Al-Khaimah</option>
-            <option value="Fujairah">Fujairah</option>
-            <option value="Ajman">Ajman</option>
-        </select>
-        <br>
+            <label for="city">City</label>
+            <select type="text" id="city" required>
+                <option value="Adu Dhabi">Adu Dhabhi</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Sharjah">Sharjah</option>
+                <option value="Al Ain">Al Ain</option>
+                <option value="Ras Al-Khaimah">Ras Al-Khaimah</option>
+                <option value="Fujairah">Fujairah</option>
+                <option value="Ajman">Ajman</option>
+            </select>
+            <br>
 
-        <label for="payment-method">Payment Method</label>
-        <select type="payment" id="method" required>
-            <option value="cash on delivery">Cash On Delivery</option>
-        </select>
+            <label for="payment-method">Payment Method</label>
+            <select type="payment" id="method" required>
+                <option value="cash on delivery">Cash On Delivery</option>
+            </select>
 
-        <button type="button" id="submit">Proceed To Payment</button>
-
-
-
-    </form>
+            <button type="button" id="submit"> Payment</button>
+        </form>
     </div>
 
+    <div id="popup"
+        style="display: none; position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px 25px; border-radius: 8px; z-index: 1000;">
+        ✅ Payment successfully!
+    </div>
+
+    <script>
+        const url = window.location.pathname;
+        const pathParts = url.split('/');
+        var userName = pathParts[2];
+        const popup = document.getElementById('popup');
+      
+
+        document.getElementById('submit').addEventListener('click', () => {
+              popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+                window.location.href = `/pet-products/${encodeURIComponent(userName)}`;
+            }, 2000);
+        })
+
+    </script>
 </body>
 
 </html>
