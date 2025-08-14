@@ -94,6 +94,7 @@ async function connectDB() {
 }
 mongoose.set("bufferCommands", false);
 
+connectDB();
 // Adoption form
 // creating schema for adding adoption forms data
 const adoptionFormSchema = new mongoose.Schema(
