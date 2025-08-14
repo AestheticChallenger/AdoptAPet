@@ -85,9 +85,11 @@ app.listen(PORT, () => {
 
 const MongoDB_URI = process.env.MongoDB_URI
 const mongoose = require('mongoose');
-mongoose.connect(MongoDB_URI)
+await mongoose.connect(MongoDB_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(() => console.log('error connecting'));
+
+mongoose.set('bufferCommands', false);
 
 
 // Adoption form
