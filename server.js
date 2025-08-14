@@ -74,7 +74,7 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'login.html'));
 });
 
-const PORT = dotenv.env.PORT || 7942;
+const PORT = process.env.PORT || 7942;
 app.listen(PORT, () => {
     console.log('🚀 Server is running at http://localhost:7942');
 });
@@ -83,7 +83,7 @@ app.listen(PORT, () => {
 
 // MongoDB - Database
 
-const MongoDB_URI = dotenv.env.MongoDB_URI
+const MongoDB_URI = process.env.MongoDB_URI
 const mongoose = require('mongoose');
 mongoose.connect(MongoDB_URI)
     .then(() => console.log('MongoDB connected'))
