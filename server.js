@@ -76,7 +76,7 @@ app.get("/login", (req, res) => {
 
 const PORT = process.env.PORT || 7942;
 app.listen(PORT, () => {
-  console.log("🚀 Server is running at http://localhost:7942");
+  console.log(`🚀 Server is running at http://localhost:${PORT}`);
 });
 
 // ===================================================================
@@ -84,6 +84,7 @@ app.listen(PORT, () => {
 // MongoDB - Database
 
 const MongoDB_URI = process.env.MongoDB_URI;
+console.log("MONGODB_URI from Render:", process.env.MongoDB_URI);
 const mongoose = require("mongoose");
 
 async function connectDB() {
