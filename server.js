@@ -90,7 +90,7 @@ const mongoose = require("mongoose");
 async function connectDB() {
   await mongoose
     .connect(MongoDB_URI)
-    .then(() => console.log("MongoDB connected"))
+    .then(() => console.log("MongoDB connected + " + MongoDB_URI))
     .catch(() => console.log("error connecting => db"));
 }
 mongoose.set("bufferCommands", false);
