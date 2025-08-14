@@ -90,7 +90,7 @@ async function connectDB() {
   await mongoose
     .connect(MongoDB_URI)
     .then(() => console.log("MongoDB connected"))
-    .catch(() => console.log("error connecting"));
+    .catch(() => console.log("error connecting => db"));
 }
 mongoose.set("bufferCommands", false);
 
