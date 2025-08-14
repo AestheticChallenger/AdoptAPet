@@ -84,7 +84,7 @@ app.listen(PORT, () => {
 // MongoDB - Database
 
 const MongoDB_URI = process.env.MONGODB_URI;
-console.log("MONGODB_URI from Render:", process.env.MongoDB_URI);
+console.log("MONGODB_URI from Render:", MongoDB_URI);
 const mongoose = require("mongoose");
 
 async function connectDB() {
