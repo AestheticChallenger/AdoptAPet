@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');
 const app = express();
+dotenv.config();
 
 // Serve static folders with proper capitalization
 app.use('/IMAGES', express.static(path.join(__dirname, 'IMAGES')));
@@ -72,16 +74,18 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML_PAGES', 'login.html'));
 });
 
-app.listen(7942, () => {
+const PORT = dotenv.env.PORT || 7942;
+app.listen(PORT, () => {
     console.log('🚀 Server is running at http://localhost:7942');
 });
 
 // ===================================================================
 
 // MongoDB - Database
+
+const MongoDB_URI = dotenv.env.MongoDB_URI
 const mongoose = require('mongoose');
-const { type } = require('os');
-mongoose.connect('mongodb://localhost:27017/adopt-a-pet')
+mongoose.connect(MongoDB_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(() => console.log('error connecting'));
 
@@ -164,7 +168,6 @@ app.post("/submit-adoption-form", async (req, res) => {
                 ${body.agree_to_have_pet}`
         });
 
-
     const adoptionFormDetails = await adoptionFormModel.create({
         pet_name: body.pet_name,
         full_name: body.full_name,
@@ -179,6 +182,7 @@ app.post("/submit-adoption-form", async (req, res) => {
         children: Number(body.children),
         agree_to_have_pet: body.agree_to_have_pet
     });
+    
 
     console.log("form: " + adoptionFormDetails);
     return res.status(201).json({ msg: "success!" });
